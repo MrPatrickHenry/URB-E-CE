@@ -60,7 +60,7 @@ class ReportingController extends Controller
             'Speed' => $Speed, 
             'Timestamp' => $time,
             'RideID' => $RideID,
-            'USERID '=> $USERID,
+            'USERID'=> $USERID,
             'avgSpeed' => 5
         ]);
 
