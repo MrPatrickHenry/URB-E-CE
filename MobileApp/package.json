@@ -1,0 +1,17 @@
+{
+  "name": "online.patrickhenry.urbe",
+  "version": "1.0.0",
+  "displayName": "Boilerplate Cordova",
+  "cordova": {
+    "platforms": [
+      "ios"
+    ],
+    "plugins": {
+      "org.apache.cordova.geolocation": {}
+    }
+  },
+  "dependencies": {
+    "cordova-ios": "~4.5.4",
+    "org.apache.cordova.geolocation": "^0.3.6"
+  }
+}

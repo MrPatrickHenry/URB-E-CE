@@ -1,0 +1,60 @@
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+* {
+    /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+    /* prevent callout to copy image, etc when tap to hold */
+    -webkit-touch-callout: none;
+    /* prevent webkit from resizing text to fit */
+    -webkit-text-size-adjust: none;
+    /* prevent copy paste, to allow, change 'none' to 'text' */
+    -webkit-user-select: none;
+}
+.stop{
+    font-size:6em;
+    color:#000;
+}
+.slow{
+        font-size:12em;
+font-weight:200;
+
+    color:#CC0000;
+}
+.medium{
+        font-size:18em;
+font-weight:400;
+
+    color:#FFFC00;
+}
+.fast{
+        font-size:20em;
+font-weight:700;
+    color:#00A6FF;
+}
+
+.{
+    position: absolute;
+
+bottom: 0;
+}
+
+#geolocation{
+    text-align: center;
+}
+
+.footerbutton{
+    position: absolute;
+    bottom:0;
+
+}
+
+.thumbsize{
+    font-size:48px!important;
+}
