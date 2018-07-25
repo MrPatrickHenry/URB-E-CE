@@ -3,7 +3,11 @@
         Options -MultiViews -Indexes
     </IfModule>
 
-    RewriteEngine On
+     RewriteEngine On
+
+    Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Methods "GET,PUT,POST,DELETE"
+Header set Access-Control-Allow-Headers "Content-Type, Authorization"
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
