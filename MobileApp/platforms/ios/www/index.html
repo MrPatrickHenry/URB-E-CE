@@ -65,7 +65,10 @@
                     }   else                    {
                         element.innerHTML = '<h2>Speed:</h2> '  + '<h1 class="stop">' + 0 + '</h1>';
                     }
-                     
+         
+
+
+
 
 
 
@@ -82,7 +85,6 @@ data.append("Speed", speedy);
 data.append("timestamp",timestamp );
 
 var xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
   if (this.readyState === 4) {
@@ -90,7 +92,8 @@ xhr.addEventListener("readystatechange", function () {
   }
 });
 
-xhr.open("POST", "http://urbe.patrickhenry.us/api/v1/ride");
+xhr.open("POST", "http://urbe.patrickhenry.us/api/v1/ride", true);
+xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
 xhr.setRequestHeader('Access-Control-Allow-Methods', 'GET, POST, PUT,DELETE, OPTIONS');
 xhr.send(data);
