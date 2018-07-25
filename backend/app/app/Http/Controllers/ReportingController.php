@@ -37,7 +37,7 @@ class ReportingController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $Latitude = $request->Latitude;
         $Longitude = $request->Longitude;
         $Altitude = $request->Altitude;
@@ -46,7 +46,7 @@ class ReportingController extends Controller
         $Heading = $request->Heading;
         $Speed = $request->Speed;
         $time = $request->timestamp;
-        $RideID = $request->RideID;
+        $RideID = $request->rid;
         $USERID = $require->USERID;
 
 

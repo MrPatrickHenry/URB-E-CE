@@ -17,7 +17,7 @@ header('Access-Control-Allow-Origin:  *');
 header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
 header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
 
-Route::post('/api/v1/ride/{id}/user/{id}/long/{long}/lat/{lat}/alt/{alt}/accuracy/{accuracy}/altaccuracy/{altaccuracy}/heading/{heading}/speed/{speed}/timestamp/{timestamp}', 'reportingController@store');
+Route::post('/api/v1/ride/{id}/user/{rid}/long/{long}/lat/{lat}/alt/{alt}/accuracy/{accuracy}/altaccuracy/{altaccuracy}/heading/{heading}/speed/{speed}/timestamp/{timestamp}', 'reportingController@store');
 
 // Admin routes 
 
