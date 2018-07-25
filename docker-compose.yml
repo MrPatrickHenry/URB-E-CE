@@ -4,7 +4,7 @@ services:
     image: "padster83/centos7-php7-laravel"
     restart: always
     ports:
-      - "8080:80"
-      - "4434:443"
+      - "7999:80"
+      - "4555:443"
     volumes:
       - ./backend:/var/www/html
