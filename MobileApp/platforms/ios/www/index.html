@@ -82,6 +82,7 @@ data.append("Speed", speedy);
 data.append("timestamp",timestamp );
 
 var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
 
 xhr.addEventListener("readystatechange", function () {
   if (this.readyState === 4) {
