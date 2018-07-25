@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
+use Storage;
+use DateTime;
 
 use Illuminate\Http\Request;
 
@@ -34,7 +37,35 @@ class ReportingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $Latitude = $request->Latitude;
+        $Longitude = $request->Longitude;
+        $Altitude = $request->Altitude;
+        $Accuracy = $request->Accuracy;
+        $AltitudeAccuracy = $request->AltitudeAccuracy;
+        $Heading = $request->Heading;
+        $Speed = $request->Speed;
+        $time = $request->timestamp;
+        $RideID = $request->RideID;
+        $USERID = $require->USERID;
+
+
+        $rideInsert = DB::table('RideData')->insert([
+            'Latitude' => $Latitude, 
+            'Longitude' => $Longitude,
+            'Altitude' => $Altitude,
+            'Accuracy' => $Accuracy,
+            'Altitude Accuracy' => $AltitudeAccuracy,
+            'Heading'=> $Heading,
+            'Speed' => $Speed, 
+            'Timestamp' => $time,
+            'RideID' => $RideID,
+            'USERID '=> $USERID,
+            'avgSpeed' => 5
+        ]);
+
+        echo json_encode($rideInsert,JSON_NUMERIC_CHECK); 
+
     }
 
     /**
