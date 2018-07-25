@@ -47,7 +47,7 @@ class ReportingController extends Controller
         $Speed = $request->Speed;
         $time = $request->timestamp;
         $RideID = $request->rid;
-        $USERID = $require->USERID;
+        $USERID = $request->USERID;
 
 
         $rideInsert = DB::table('RideData')->insert([
