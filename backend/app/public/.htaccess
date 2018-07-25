@@ -7,7 +7,8 @@
 
 Header set Access-Control-Allow-Origin "*"
 Header set Access-Control-Allow-Headers "origin, x-requested-with, content-type"
-Header set Access-Control-Allow-Methods "PUT"
+Header add Access-Control-Allow-Methods "PUT"
+Header set access-control-allow-methods "PUT"
 
 
     # Handle Authorization Header
