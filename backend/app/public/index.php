@@ -38,9 +38,9 @@ require __DIR__.'/../vendor/autoload.php';
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
 
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Access-Control-Allow-Origin');
-header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
+// header('Access-Control-Allow-Origin: *');
+// header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Access-Control-Allow-Origin, access-control-allow-methods');
+// header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
 /*
 |--------------------------------------------------------------------------
 | Run The Application
