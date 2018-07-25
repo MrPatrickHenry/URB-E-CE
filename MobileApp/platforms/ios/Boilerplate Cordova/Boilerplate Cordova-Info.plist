@@ -33,8 +33,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSLocationUsageDescription</key>
+	<string>Need it for speed</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Need it for speed</string>
 	<key>NSMainNibFile</key>
 	<string></string>
 	<key>NSMainNibFile~ipad</key>

@@ -46,8 +46,16 @@
                 //
                 function onSuccess(position) {
                     var element = document.getElementById('geolocation');
-                    // speedy = position.coords.speed * 2.23,0;
-                    speedy = Math.floor(Math.random()*20);
+                 speedy = position.coords.speed * 2.23,0;
+                 timestamp = position.timestamp;
+                 Latitude = position.coords.latitude;
+                 Longitude = position.coords.longitude;
+                 Altitude = position.coords.altitude;
+                 Accuracy = position.coords.accuracy;
+                 AltitudeAccuracy = position.coords.altitudeAccuracy;
+                 Heading = position.coords.heading;
+
+                    // speedy = Math.floor(Math.random()*20);
                     if(speedy <= 9){
                         element.innerHTML = '<h2>Speed:</h2> '  + '<h1 class="slow">' + speedy + '</h1>';
                     }   else if(speedy <10)     {
@@ -57,6 +65,10 @@
                     }   else                    {
                         element.innerHTML = '<h2>Speed:</h2> '  + '<h1 class="stop">' + 0 + '</h1>';
                     }
+                     
+
+                     syncnGO();
+
 
                     // var desc=speedy;
                     // myDB.transaction(function(transaction) {
@@ -69,6 +81,37 @@
                     //                                         alert('Error occurred');
                     //                                         });
                     //                  });
+
+
+                    function syncnGo(){
+
+var data = new FormData();
+data.append("rid", "1");
+data.append("USERID", "2");
+data.append("Longitude", Latitude);
+data.append("Latitude", Longitude);
+data.append("Altitude", Altitude);
+data.append("Accuracy", Accuracy);
+data.append("AltitudeAccuracy", AltitudeAccuracy);
+data.append("Heading", Heading);
+data.append("Speed", speedy);
+data.append("timestamp",timestamp );
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("POST", "http://urbe.patrickhenry.us/api/v1/ride");
+xhr.setRequestHeader("Cache-Control", "no-cache");
+xhr.setRequestHeader("Postman-Token", "7c129345-16ef-db19-3016-2a928824cd5a");
+xhr.send(data);
+
+                    }
 
                 }
                 
