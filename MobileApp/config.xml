@@ -26,7 +26,3 @@
     <engine name="ios" spec="~4.5.4" />
     <plugin name="org.apache.cordova.geolocation" spec="^0.3.6" />
 </widget>
-
-<edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
-    <string>need location access to find things nearby</string>
-</edit-config>

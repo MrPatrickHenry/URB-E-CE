@@ -48,7 +48,10 @@ class ReportingController extends Controller
         $time = $request->timestamp;
         $RideID = $request->rid;
         $USERID = $request->USERID;
-
+        $now = new DateTime();
+        $x = $request->xvalue;
+        $y = $request->yvalue;
+        $z = $request->zvalue;
 
         $rideInsert = DB::table('RideData')->insert([
             'Latitude' => $Latitude, 
@@ -58,10 +61,13 @@ class ReportingController extends Controller
             'Altitude Accuracy' => $AltitudeAccuracy,
             'Heading'=> $Heading,
             'Speed' => $Speed, 
-            'Timestamp' => $time,
+            'Timestamp' => $now,
             'RideID' => $RideID,
             'USERID'=> $USERID,
-            'avgSpeed' => 5
+            'x' => $x,
+            'y' => $y,
+            'z' => $z
+
         ]);
 
         echo json_encode($rideInsert,JSON_NUMERIC_CHECK); 
