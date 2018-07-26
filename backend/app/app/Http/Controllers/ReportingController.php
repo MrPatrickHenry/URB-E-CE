@@ -54,8 +54,8 @@ class ReportingController extends Controller
         $z = $request->zvalue;
 
         $rideInsert = DB::table('RideData')->insert([
-            'Latitude' => $Latitude, 
-            'Longitude' => $Longitude,
+            'Latitude' => $Longitude, 
+            'Longitude' => $Latitude,
             'Altitude' => $Altitude,
             'Accuracy' => $Accuracy,
             'Altitude Accuracy' => $AltitudeAccuracy,
