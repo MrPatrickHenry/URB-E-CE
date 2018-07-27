@@ -75,11 +75,23 @@ class ReportingController extends Controller
     }
 
 
-    public function summary(Request $request)
+    public function summaryCreate(Request $request)
 {
 // get data ready for math
 // math for summary
 // inject in to table
+
+
+
+
+}
+
+public function summaryShow(Request $request){
+
+
+    $uid = $request->id;
+$riderSummary = DB::table('ridesummary')->where('id','=',$uid)->get();
+        echo json_encode($riderSummary,JSON_NUMERIC_CHECK);  
 }
 
 public function odometer(Request $request)

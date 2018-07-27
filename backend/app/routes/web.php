@@ -14,8 +14,6 @@ use Illuminate\Http\Request;
 */
 
 
-Route::post('/api/v1/ride/', 'profileController@show');
-
 // Admin routes 
 
 Route::group(['middleware' => 'auth'], function()

@@ -22,7 +22,7 @@
   "_resolved": "https://registry.npmjs.org/cordova-plugin-device-gyroscope/-/cordova-plugin-device-gyroscope-0.2.2.tgz",
   "_shasum": "0095b23c1884f0b99317a6a1de31075b5163f0b6",
   "_spec": "cordova-plugin-device-gyroscope@0.2.2",
-  "_where": "/Users/patrickhenry/Dev/urbE_CE/URB-E-CE/MobileApp",
+  "_where": "/Users/patrickhenry/Dev/urbeRider",
   "author": {
     "name": "Alexis Tacnet"
   },

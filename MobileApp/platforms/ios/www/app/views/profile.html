@@ -1,12 +1,11 @@
-<main class="mdl-layout__content">
+<main class="mdl-layout__content" ng-controller="profileController">
     <div class="demo-card-square mdl-card" style="width:95%; margin0:auto;">
         <div class="mdl-card__title mdl-card--expand">
         </div>
         <div class="mdl-card__supporting-text">
         <img src="https://randomuser.me/api/portraits/men/21.jpg" alt="John" style="width:100%">
-            <h1>John Doe</h1>
-            <p class="title">CEO and Founder, Example</p>
-            <p>Harvard University</p>
+            <h1>@{{profileuser[0].name}}</h1>
+            <p class="title">@{{profileuser[0].devices}}</p>
             
             </div>
     </div>

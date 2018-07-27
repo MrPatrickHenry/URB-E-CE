@@ -7,10 +7,26 @@
     "is_top_level": true,
     "variables": {}
   },
-  "org.apache.cordova.geolocation": {
+  "cordova-plugin-camera": {
     "source": {
       "type": "registry",
-      "id": "org.apache.cordova.geolocation"
+      "id": "cordova-plugin-camera@~4.0.3"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-geolocation": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-geolocation@~4.0.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-dialogs": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-dialogs@~2.0.1"
     },
     "is_top_level": true,
     "variables": {}
@@ -23,10 +39,10 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-gyroscope": {
+  "cordova-plugin-bluetoothle": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-gyroscope@0.1.4"
+      "id": "cordova-plugin-bluetoothle@~4.4.4"
     },
     "is_top_level": true,
     "variables": {}

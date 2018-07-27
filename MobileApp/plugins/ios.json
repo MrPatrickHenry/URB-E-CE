@@ -8,10 +8,22 @@
   },
   "installed_plugins": {
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "online.patrickhenry.urbe"
+      "PACKAGE_NAME": "io.cordova.boilerplatecordova"
     },
-    "org.apache.cordova.geolocation": {
-      "PACKAGE_NAME": "online.patrickhenry.urbe"
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "io.cordova.boilerplatecordova"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "io.cordova.boilerplatecordova"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "io.cordova.boilerplatecordova"
+    },
+    "cordova-plugin-device-gyroscope": {
+      "PACKAGE_NAME": "io.cordova.boilerplatecordova"
+    },
+    "cordova-plugin-bluetoothle": {
+      "PACKAGE_NAME": "io.cordova.boilerplatecordova"
     }
   },
   "dependent_plugins": {}

@@ -1,5 +1,5 @@
 {
-  "name": "online.patrickhenry.urbe",
+  "name": "io.cordova.boilerplatecordova",
   "version": "1.0.0",
   "displayName": "Boilerplate Cordova",
   "cordova": {
@@ -7,13 +7,14 @@
       "ios"
     ],
     "plugins": {
-      "org.apache.cordova.geolocation": {}
+      "cordova-plugin-camera": {},
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-dialogs": {},
+      "cordova-plugin-device-gyroscope": {},
+      "cordova-plugin-bluetoothle": {}
     }
   },
   "dependencies": {
-    "cordova-ios": "~4.5.4",
-    "cordova-plugin-device-gyroscope": "^0.2.2",
-    "cordova-plugin-gyroscope": "^0.1.4",
-    "org.apache.cordova.geolocation": "^0.3.6"
+    "cordova-ios": "^4.5.4"
   }
 }
