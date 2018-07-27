@@ -19,12 +19,6 @@
             .when('/settings', {
                   templateUrl : 'app/views/settings.html'
                   })
-            .when('/pastrides', {
-                  templateUrl : 'app/views/pastrides.html'
-                  })
-            .when('/rides', {
-                  templateUrl : 'app/views/rides.html'
-                  })
         .otherwise ({ redirectTo: '/' });
     })
     .run(function(){

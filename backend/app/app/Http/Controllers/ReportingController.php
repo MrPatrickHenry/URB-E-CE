@@ -74,6 +74,20 @@ class ReportingController extends Controller
 
     }
 
+
+    public function summary(Request $request)
+{
+// get data ready for math
+// math for summary
+// inject in to table
+}
+
+public function odometer(Request $request)
+{
+    // recieve data from summary and append to odometer in profiel
+}
+    
+
     /**
      * Display the specified resource.
      *

@@ -21,17 +21,6 @@ body {
     font-size:6em;
     color:#000;
 }
-.logo{
-    width:350px;
-}
-
-.inputsmobile{
-    font-size:20px;
-    height: auto;
-    font-weight: 200;
-text-rendering:optimizeLegibility;
-
-}
 .slow{
         font-size:12em;
 font-weight:200;

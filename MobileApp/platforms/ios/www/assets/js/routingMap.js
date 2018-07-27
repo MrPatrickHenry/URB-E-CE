@@ -1,48 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
- <link rel="stylesheet" href="assets/css/material.blue-amber.min.css" />
- <link rel="stylesheet" href="assets/css/app.css" />
- <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-<meta content="utf-8" http-equiv="encoding">
- <title>URB-E CE</title>
- 
- <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-
-  <script type="text/javascript">
-  document.addEventListener("deviceready", onDeviceReady, false);
-</script>
-
-<!--  <script src="assets/js/speedometer.js" type="text/javascript" charset="utf-8"></script>
- <script type="text/javascript" charset="utf-8" src="assets/js/gyro.js"></script> -->
-<style>
-    html, body, #map {
-      height: 100%;
-      margin: 0px;
-      padding: 0px
-    }
-  </style>
- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=geometry&key=AIzaSyBWWy10Tk3kmIIeQvSdXKLjU5VErMVMSD8">
- </script>
-  <script>
-    function initialize() {
+function initialize() {
       var map = new google.maps.Map(document.getElementById("map"), {
         center: {lat: pathCoords[0].lat, lng: pathCoords[0].lng},
         zoom: 14,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
-
+      
       autoRefresh(map);
     }
     function moveMarker(map, marker, latlng) {
       marker.setPosition(latlng);
       map.panTo(latlng);
     }
-
     function autoRefresh(map) {
       var i, route, marker;
       
@@ -63,10 +31,9 @@
           var latlng = new google.maps.LatLng(coords.lat, coords.lng);
           route.getPath().push(latlng);
           moveMarker(map, marker, latlng);
-        }, 5 * i, pathCoords[i]);
+        }, 10 * i, pathCoords[i]);
       }
     }
-
     google.maps.event.addDomListener(window, 'load', initialize);
     var pathCoords = [
 {"lat":40.74906618,"lng":-73.94363556},
@@ -2047,57 +2014,3 @@
 {"lat":40.75013498,"lng":-73.93947292},
 {"lat":40.75013498,"lng":-73.93947292}
 ];
-
-  </script>
-</head>
-<body ng-app="app">
-
- <header class="mdl-layout__header">
-  <div class="mdl-layout__header-row">
-    <div class="mdl-layout-spacer"></div>
-  </div>
-</header>
-
-<div class="mdl-layout__drawer" id="menunav">
-  <nav class="mdl-navigation">
-    <a class="mdl-navigation__link" href="#!profile" onclick="NavShow()">Profile</a>
-    <a class="mdl-navigation__link" href="#!speedometer" onclick="NavShow()">Speedometer</a>
-    <a class="mdl-navigation__link" href="#!settings" onclick="NavShow()">Settings</a>
-        <a class="mdl-navigation__link" href="#!pastrides" onclick="NavShow()">Rides</a>
-
-<!--     <a class="mdl-navigation__link" href="#!maprides" onclick="NavShow()">map</a>
- -->
-  </nav>
-</div>
-
-<div id="container">
-<div ng-view></div>        
-</div>
-<div id="map"></div>
-
-<footer class="footerbutton">
- <button id="demo-menu-top-left" class="mdl-button mdl-js-button mdl-button--icon" style="z-index: 500" onclick="NavShow()">
-  <i class="material-icons thumbsize">more_vert</i>
-</button>
-
-</footer>        
-
-
-<script>
-  function NavShow() {
-    var element = document.getElementById("menunav");
-    element.classList.toggle("is-visible");
-  } 
-          console.log("map");
-</script>
-   <script type="text/javascript" src="assets/js/angular.min.js"></script>
-  <script type="text/javascript" src="assets/js/angular-route.min.js"></script>
-  
- <script type="text/javascript" src="app/bootstrap.js"></script>
-  
- <script type="text/javascript" src="app/controllers/home.js"></script>
-  
- <script type="text/javascript" src="assets/js/material.js"></script> 
-
-</body>
-</html>

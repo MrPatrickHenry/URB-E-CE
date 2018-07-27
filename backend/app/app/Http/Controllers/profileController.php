@@ -56,11 +56,8 @@ class profileController extends Controller
     {
      
 $uid = $request->id;
-$AccountInfo = DB::table('users')->select('name', 'email','created_at','updated_at','email', 'card_brand','email','card_last_four','account_type','business_name','SDK_Key','active', 'tier','business_title','business_logo','user_profile_avatar','email')->where('id','=',$uid)->get();
-
-
+$AccountInfo = DB::table('users')->select('name', 'email','created_at','email','account_type','active', 'tier','business_title','user_profile_avatar','devices','gender','height','weight','publicShare','metric')->where('id','=',$uid)->get();
         echo json_encode($AccountInfo,JSON_NUMERIC_CHECK);  
-
     }
 
     /**
@@ -107,24 +104,6 @@ $AccountInfo = DB::table('users')->select('name', 'email','created_at','updated_
 
     }
 
-
-
-    public function publishersdkgen(Request $request)
-    {
-        $now = new DateTime();
-        $UId = $request->user()->id;
-
-        $uuid = Uuid::generate(4);
-        $pubkeyupdated = DB::table('users')
-        ->where('id', 1)
-        ->update(['SDK_Key' => $uuid]);
-
-
-
-
-        return response($uuid)
-        ->header('Content-Type', 'application/json');
-    }
 
     /**
      * Remove the specified resource from storage.
