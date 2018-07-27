@@ -29,25 +29,25 @@ public function run()
 
     $faker = Faker::create();
 //usercreation
-    foreach(range(1,1000) as $index){
-        DB::table('users')->insert([
-            'name' => $faker->name,
-            'email' => $faker->companyEmail,
-            'password' => bcrypt('secret'),
-            'account_type' =>   $faker->randomElement(['Rider','Business','Staff']),
-            'devices' =>        $faker->randomElement(['Sport','GTX','Sport-Pro','GTX-Pro']),
-            'active' =>         $faker->randomElement(['Active','Terminated','Suspended']),
-            'gender' =>         $faker->randomElement(['Male','Female','NA']),
-            'height' =>         $faker->numberBetween(130,200),
-            'weight' =>         $faker->numberBetween(100,200),
-            'publicShare' =>         $faker->numberBetween(0,1),
-            'metric' =>         $faker->numberBetween(0,1),
-            'odmoeter' =>         $faker->numberBetween(0,20000),
-            'tier' =>           $faker->randomElement(['Standard','Bronze','Silver','Gold','Platinum']),
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'user_profile_avatar' => $faker->imageUrl($width, $height, 'people', true, 'Faker', true)
-        ]);
-        }
+    // foreach(range(1,1000) as $index){
+    //     DB::table('users')->insert([
+    //         'name' => $faker->name,
+    //         'email' => $faker->companyEmail,
+    //         'password' => bcrypt('secret'),
+    //         'account_type' =>   $faker->randomElement(['Rider','Business','Staff']),
+    //         'devices' =>        $faker->randomElement(['Sport','GTX','Sport-Pro','GTX-Pro']),
+    //         'active' =>         $faker->randomElement(['Active','Terminated','Suspended']),
+    //         'gender' =>         $faker->randomElement(['Male','Female','NA']),
+    //         'height' =>         $faker->numberBetween(130,200),
+    //         'weight' =>         $faker->numberBetween(100,200),
+    //         'publicShare' =>         $faker->numberBetween(0,1),
+    //         'metric' =>         $faker->numberBetween(0,1),
+    //         'odmoeter' =>         $faker->numberBetween(0,20000),
+    //         'tier' =>           $faker->randomElement(['Standard','Bronze','Silver','Gold','Platinum']),
+    //         'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+    //         'user_profile_avatar' => $faker->imageUrl($width, $height, 'people', true, 'Faker', true)
+    //     ]);
+    //     }
 
 
         foreach (range(1,3000) as $index) {
@@ -56,8 +56,8 @@ public function run()
                 'city' => $faker->city,
                 'avgSpeed' => $faker->numberBetween(0,20),
                 'maxSpeed' => $faker->numberBetween(0,20),
-                'distance' => $faker->numberBetween(0,100)
-
+                'distance' => $faker->numberBetween(0,100),
+                'userID' => $faker->numberBetween(0,1000)
 
             ]);
         }
