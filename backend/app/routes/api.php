@@ -18,5 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('api/v1/profile/{id}', 'profileController@show');
+Route::get('/v1/profile/{id}', 'profileController@show');
 

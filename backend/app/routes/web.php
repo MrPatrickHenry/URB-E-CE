@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 
-Route::post('/api/v1/ride/', 'ReportingController@store');
+Route::post('/api/v1/ride/', 'profileController@show');
 
 // Admin routes 
 
@@ -25,8 +25,8 @@ Route::group(['middleware' => 'auth'], function()
 
     Route::get('dashboard', function() {} );
 
-Route::get('/orders', function () {
-    return view('orders');
+Route::get('/', function () {
+    return view('welcome');
 });
 
 });
