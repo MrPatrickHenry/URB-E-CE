@@ -90,7 +90,7 @@ public function summaryShow(Request $request){
 
 
     $uid = $request->id;
-$riderSummary = DB::table('ridesummary')->where('id','=',$uid)->get();
+$riderSummary = DB::table('ridesummary')->where('userID','=',$uid)->get();
         echo json_encode($riderSummary,JSON_NUMERIC_CHECK);  
 }
 
