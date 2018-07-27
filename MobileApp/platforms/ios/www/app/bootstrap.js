@@ -11,7 +11,9 @@
             controllerAs : 'Home'
         })
             .when('/profile', {
-                  templateUrl : 'app/views/profile.html'
+                  templateUrl : 'app/views/profile.html',
+                  controller   : 'ProfileController',
+            controllerAs : 'Profile'
                   })
             .when('/speedometer', {
                   templateUrl : 'app/views/speedometerDashboard.html'
