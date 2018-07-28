@@ -47,7 +47,7 @@ class ReportingController extends Controller
         $Speed = $request->Speed;
         $time = $request->timestamp;
         $RideID = 3;
-        $USERID = $request->USERID;
+        $USERID = 2;
         $now = new DateTime();
         $x = $request->xvalue;
         $y = $request->yvalue;
