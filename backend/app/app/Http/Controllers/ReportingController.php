@@ -96,7 +96,14 @@ $riderSummary = DB::table('ridesummary')->where('userID','=',$uid)->get();
 
 public function odometer(Request $request)
 {
-    // recieve data from summary and append to odometer in profiel
+    // recieve data from summary and append to odometer in profile
+
+$uid = $request->id;
+
+$odometer = DB:table('ridesummary') >where('userId', $uid)
+                ->sum('distance')-get();
+
+echo json_encode($odometer,JSON_NUMERIC_CHECK);  
 }
     
 
