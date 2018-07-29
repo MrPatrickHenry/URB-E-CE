@@ -100,7 +100,7 @@ public function odometer(Request $request)
 
 $uid = $request->id;
 
-$odometer = DB:table('ridesummary') >where('userId', $uid)
+$odometer = DB::table('ridesummary') >where('userId', $uid)
                 ->sum('distance')-get();
 
 echo json_encode($odometer,JSON_NUMERIC_CHECK);  
