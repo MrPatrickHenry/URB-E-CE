@@ -87,26 +87,16 @@ class ReportingController extends Controller
         $totalDistance = 0;
 
 //get the data and totals in seperate array
-        $lats= DB::table('RideData')->select('Latitude')->where('rideID','=',1)->get();
-        $longs = DB::table('RideData')->select('Longitude')->where('rideID','=',1)->get();
+        $lats= DB::table('RideData')->select('Latitude','Longitude')->where('rideID','=',1)->get();
         $num = count($lats);
 
 
 for($i=0;$i<$num;$i++){
-            $distance = distance($lats[$i],$longs[$i],$lats[$i+1],$longs[$i+1],"N");
-        }  
+            $distance = distance($lats->Latitude[$i],$lats->Longitude[$i],$lats[$i+1],$longs[$i+1],"N");
+        }
 
-//calculate the distance from above
-    
-
-      //start to iterate distance in to array
-         
-  }
-
-
-    function distance($lat1, $lon1, $lat2, $lon2, $unit) 
+           function distance($lat1, $lon1, $lat2, $lon2, $unit) 
         {
-
             $theta = $lon1 - $lon2;
             $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
             $dist = acos($dist);
@@ -123,7 +113,12 @@ for($i=0;$i<$num;$i++){
               echo json_encode($miles,JSON_NUMERIC_CHECK);  
 
           }
-      }
+      }   
+         
+  }
+
+
+
   public function summaryShow(Request $request){
 
 
