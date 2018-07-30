@@ -87,7 +87,7 @@ class ReportingController extends Controller
         $totalDistance = 0;
 
 //get the data and totals in seperate array
-        $lats= DB::table('RideData')->select('Latitude','Longitude')->where('rideID','=',1)->get();
+        $lats= DB::table('RideData')->select('Latitude','Longitude')->where('USERID','=',1)->get();
         $num = count($lats);
        
        function distance($lat1, $lon1, $lat2, $lon2, $unit) 
