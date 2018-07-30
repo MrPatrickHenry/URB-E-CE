@@ -84,7 +84,7 @@ class ReportingController extends Controller
 
 $uid = $request->id;
 $rideID = $request->RideID;
-$totalDistance = 0
+$totalDistance = 0;
 
 
 $lat = DB::table('RideData')->select('Latitude')->where('rideID','=',1)->get();
