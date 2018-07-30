@@ -111,7 +111,7 @@ public function summaryCreate(Request $request)
 
 
     $rideSummaryInsert = DB::table('ridesummary')->insert([
-        'distance' => $miles,
+        'distance' => 0,
         'rideID' => $rideID,
         'avgSpeed' => $avgSpeed,
         'maxSpeed' => $MaxSpeed
