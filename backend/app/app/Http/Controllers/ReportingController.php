@@ -95,15 +95,6 @@ public function summaryCreate(Request $request)
     $avgSpeed = DB::table('RideData')->where([['USERID','=', $uid],['rideID','=', $rideID]])->avg('Speed');
     $MaxSpeed = DB::table('RideData')->where([['USERID','=', $uid],['rideID','=', $rideID]])->orderBy('Speed', 'desc')->limit(1)->get();
 
-    $rideSummaryInsert = DB::table('ridesummary')->insert([
-        'distance' => $miles,
-        'rideID' => $rideID,
-        'avgSpeed' => $avgSpeed,
-        'maxSpeed' => $MaxSpeed
-    ]);
-
-
-
     function distance($lat1, $lon1, $lat2, $lon2) 
     {
         $theta = $lon1 - $lon2;
@@ -118,6 +109,13 @@ public function summaryCreate(Request $request)
         dd($distance);      
     }
 
+
+    $rideSummaryInsert = DB::table('ridesummary')->insert([
+        'distance' => $miles,
+        'rideID' => $rideID,
+        'avgSpeed' => $avgSpeed,
+        'maxSpeed' => $MaxSpeed
+    ]);
 
 
 }
