@@ -113,6 +113,8 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit)
         echo json_encode($miles,JSON_NUMERIC_CHECK);  
 
 }
+}
+}
 
 public function summaryShow(Request $request){
 
