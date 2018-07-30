@@ -89,13 +89,8 @@ class ReportingController extends Controller
 //get the data and totals in seperate array
         $lats= DB::table('RideData')->select('Latitude','Longitude')->where('rideID','=',1)->get();
         $num = count($lats);
-
-
-for($i=0;$i<$num;$i++){
-            $distance = distance($lats->Latitude[$i],$lats->Longitude[$i],$lats[$i+1],$longs[$i+1],"N");
-        }
-
-           function distance($lat1, $lon1, $lat2, $lon2, $unit) 
+       
+       unction distance($lat1, $lon1, $lat2, $lon2, $unit) 
         {
             $theta = $lon1 - $lon2;
             $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
@@ -113,7 +108,15 @@ for($i=0;$i<$num;$i++){
               echo json_encode($miles,JSON_NUMERIC_CHECK);  
 
           }
-      }   
+      } 
+
+
+
+for($i=0;$i<$num;$i++){
+            $distance = distance($lats->Latitude[$i],$lats->Longitude[$i],$lats[$i+1],$longs[$i+1],"N");
+        }
+
+      
          
   }
 
