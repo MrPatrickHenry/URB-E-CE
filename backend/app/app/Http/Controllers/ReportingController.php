@@ -82,14 +82,18 @@ class ReportingController extends Controller
 // inject in to table
 
 
-        $uid = $request->id;
-        $rideID = $request->RideID;
+        $uid = 1;
+        $rideID = 1;
         $totalDistance = 0;
 
 //get the data and totals in seperate array
-        $lats= DB::table('RideData')->select('Latitude','Longitude')->where('rideID','=',1)->get();
+        $lats= DB::table('RideData')->select('Latitude','Longitude')->where(['USERID','=', $uid],['rideID','=', $rideID])->get();
         $num = count($lats);
 
+
+//avg speed
+        $avgSpeed = DB::table('RideData')->where(['USERID','=', $uid],['rideID','=', $rideID])->avg('Speed')->get();
+        $MaxSpeed = DB::table('RideData')->where(['USERID','=', $uid],['rideID','=', $rideID])->orderBy('Speed', 'desc')->limit(1)->get();
 
 
        function distance($lat1, $lon1, $lat2, $lon2) 
@@ -102,7 +106,11 @@ class ReportingController extends Controller
 
 
 $rideSummaryInsert = DB::table('ridesummary')->insert([
-            'distance' => $miles
+            'distance' => $miles,
+            'rideID' => $rideID,
+            'avgSpeed' => $avgSpeed,
+            'maxSpeed' => $MaxSpeed,
+
         ]);
       } 
 
