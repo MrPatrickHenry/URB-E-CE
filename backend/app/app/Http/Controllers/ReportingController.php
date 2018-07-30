@@ -87,8 +87,8 @@ $rideID = $request->RideID;
 $totalDistance = 0
 
 
-$lat = DB::table('RideData')->select('Latitude')->where('rideID','=',$rideID)->get();
-$long = DB::table('RideData')->select('Latitude')->where('rideID','=',$rideID)->get();
+$lat = DB::table('RideData')->select('Latitude')->where('rideID','=',1)->get();
+$long = DB::table('RideData')->select('Latitude')->where('rideID','=',1)->get();
 
 for($i=0;$i<$num;$i++){
     $distance=distance($lat[$i],$long[$i],$lat[$i+1],$long[$i+1],"N");
