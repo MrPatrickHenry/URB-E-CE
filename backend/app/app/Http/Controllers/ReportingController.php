@@ -92,8 +92,8 @@ class ReportingController extends Controller
 
 
 //avg speed
-        $avgSpeed = DB::table('RideData')->where(['USERID','=', $uid],['rideID','=', $rideID])->avg('Speed')->get();
-        $MaxSpeed = DB::table('RideData')->where(['USERID','=', $uid],['rideID','=', $rideID])->orderBy('Speed', 'desc')->limit(1)->get();
+        $avgSpeed = DB::table('RideData')->where([['USERID','=', $uid],['rideID','=', $rideID]])->avg('Speed')->get();
+        $MaxSpeed = DB::table('RideData')->where([['USERID','=', $uid],['rideID','=', $rideID]])->orderBy('Speed', 'desc')->limit(1)->get();
 
 
        function distance($lat1, $lon1, $lat2, $lon2) 
