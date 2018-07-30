@@ -89,30 +89,27 @@ class ReportingController extends Controller
 //get the data and totals in seperate array
         $lats= DB::table('RideData')->select('Latitude','Longitude')->where('rideID','=',1)->get();
         $num = count($lats);
-       dd($lats);
-       function distance($lat1, $lon1, $lat2, $lon2, $unit) 
+
+
+
+       function distance($lat1, $lon1, $lat2, $lon2) 
         {
             $theta = $lon1 - $lon2;
             $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
             $dist = acos($dist);
             $dist = rad2deg($dist);
             $miles = $dist * 60 * 1.1515;
-            $unit = strtoupper($unit);
 
 
 $rideSummaryInsert = DB::table('ridesummary')->insert([
             'distance' => $miles
         ]);
-
-
-
-
       } 
 
 
 
 for($i=0;$i<$num;$i++){
-            $distance = distance($lats[$i]->Latitude,$lats[$i]->Longitude,$lats[$i+1]->Latitude,$lats[$i+1]->Longitude,"N");
+            $distance = distance($lats[$i]->Latitude,$lats[$i]->Longitude,$lats[$i+1]->Latitude,$lats[$i+1]->Longitude);
         }
 
       
