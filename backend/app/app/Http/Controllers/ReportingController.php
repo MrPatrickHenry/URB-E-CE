@@ -87,13 +87,14 @@ class ReportingController extends Controller
         $totalDistance = 0;
 
 //get the data and totals in seperate array
-        $lat= DB::table('RideData')->select('Latitude')->where('rideID','=',1)->get();
-        $long = DB::table('RideData')->select('Longitude')->where('rideID','=',1)->get();
+        $lats= DB::table('RideData')->select('Latitude')->where('rideID','=',1)->get();
+        $longs = DB::table('RideData')->select('Longitude')->where('rideID','=',1)->get();
         $num = count($lat);
 
-$lats=$lat->Latitude;
-$longs=$lon->Longitude;
 
+for($i=0;$i<$num;$i++){
+            $distance = distance($lats[$i],$longs[$i],$lats[$i+1],$longs[$i+1],"N");
+        }  
 
 //calculate the distance from above
         function distance($lat1, $lon1, $lat2, $lon2, $unit) 
@@ -118,9 +119,7 @@ $longs=$lon->Longitude;
       }
 
       //start to iterate distance in to array
-        for($i=0;$i<$num;$i++){
-            $distance = distance($lats[$i],$longs[$i],$lats[$i+1],$longs[$i+1],"N");
-        }   
+         
   }
 
   public function summaryShow(Request $request){
