@@ -103,7 +103,12 @@ public function summaryCreate(Request $request)
         $dist = acos($dist);
         $dist = rad2deg($dist);
         $miles = $dist * 60 * 1.1515;
+  } 
 
+
+
+for($i=0;$i<$num;$i++){
+        $distance = distance($lats[$i]->Latitude,$lats[$i]->Longitude,$lats[$i+1]->Latitude,$lats[$i+1]->Longitude);
 
 $rideSummaryInsert = DB::table('ridesummary')->insert([
         'distance' => $miles,
@@ -111,12 +116,8 @@ $rideSummaryInsert = DB::table('ridesummary')->insert([
         'avgSpeed' => $avgSpeed,
         'maxSpeed' => $MaxSpeed
     ]);
-  } 
 
-
-
-for($i=0;$i<$num;$i++){
-        $distance = distance($lats[$i]->Latitude,$lats[$i]->Longitude,$lats[$i+1]->Latitude,$lats[$i+1]->Longitude);
+        
     }
 
   
