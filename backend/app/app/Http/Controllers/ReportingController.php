@@ -113,7 +113,7 @@ class ReportingController extends Controller
 
 
 for($i=0;$i<$num;$i++){
-            $distance = distance($lats->Latitude[$i],$lats->Longitude[$i],$lats[$i+1],$longs[$i+1],"N");
+            $distance = distance($lats[$i]->Latitude,$lats[$i]->Longitude,$lats[$i+1]->Latitude,$longs[$i+1]->Longitude,"N");
         }
 
       
