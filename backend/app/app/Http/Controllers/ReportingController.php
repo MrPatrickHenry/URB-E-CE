@@ -95,33 +95,31 @@ public function summaryCreate(Request $request)
     $avgSpeed = DB::table('RideData')->where([['USERID','=', $uid],['rideID','=', $rideID]])->avg('Speed');
     $MaxSpeed = DB::table('RideData')->where([['USERID','=', $uid],['rideID','=', $rideID]])->orderBy('Speed', 'desc')->limit(1)->get();
 
-
-   function distance($lat1, $lon1, $lat2, $lon2) 
-    {
-        $theta = $lon1 - $lon2;
-        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
-        $dist = acos($dist);
-        $dist = rad2deg($dist);
-        $miles = $dist * 60 * 1.1515;
-  } 
-
-
-
-for($i=0;$i<$num;$i++){
-        $distance = distance($lats[$i]->Latitude,$lats[$i]->Longitude,$lats[$i+1]->Latitude,$lats[$i+1]->Longitude);
-
-$rideSummaryInsert = DB::table('ridesummary')->insert([
+    $rideSummaryInsert = DB::table('ridesummary')->insert([
         'distance' => $miles,
         'rideID' => $rideID,
         'avgSpeed' => $avgSpeed,
         'maxSpeed' => $MaxSpeed
     ]);
 
-        
+
+
+    function distance($lat1, $lon1, $lat2, $lon2) 
+    {
+        $theta = $lon1 - $lon2;
+        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+        $dist = acos($dist);
+        $dist = rad2deg($dist);
+        $miles = $dist * 60 * 1.1515;
+    } 
+
+    for($i=0;$i<$num;$i++){
+        $distance = distance($lats[$i]->Latitude,$lats[$i]->Longitude,$lats[$i+1]->Latitude,$lats[$i+1]->Longitude);  
+        dd($distance);      
     }
 
-  
-     
+
+
 }
 
 
@@ -129,21 +127,21 @@ $rideSummaryInsert = DB::table('ridesummary')->insert([
 public function summaryShow(Request $request){
 
 
-$uid = $request->id;
-$riderSummary = DB::table('ridesummary')->where('userID','=',$uid)->get();
-echo json_encode($riderSummary,JSON_NUMERIC_CHECK);  
+    $uid = $request->id;
+    $riderSummary = DB::table('ridesummary')->where('userID','=',$uid)->get();
+    echo json_encode($riderSummary,JSON_NUMERIC_CHECK);  
 }
 
 public function odometer(Request $request)
 {
 // recieve data from summary and append to odometer in profile
 
-$uid = $request->id;
+    $uid = $request->id;
 
-$odometer = DB::table('ridesummary') >where('userId', $uid)
-->sum('distance')-get();
+    $odometer = DB::table('ridesummary') >where('userId', $uid)
+    ->sum('distance')-get();
 
-echo json_encode($odometer,JSON_NUMERIC_CHECK);  
+    echo json_encode($odometer,JSON_NUMERIC_CHECK);  
 }
 
 
