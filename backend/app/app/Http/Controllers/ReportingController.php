@@ -99,15 +99,14 @@ class ReportingController extends Controller
             $miles = $dist * 60 * 1.1515;
             $unit = strtoupper($unit);
 
-            if ($unit == "K") {
-              return ($miles * 1.60934);
-          } else if ($unit == "N") {
-              return ($miles * 0.8684);
-          } else {
-              return $miles;
-              echo json_encode($miles,JSON_NUMERIC_CHECK);  
+           
+$rideSummaryInsert = DB::table('ridesummary')->insert([
+            'distance' => $miles
+        ]);
 
-          }
+
+
+
       } 
 
 
