@@ -97,7 +97,14 @@ for($i=0;$i<$num;$i++){
         }  
 
 //calculate the distance from above
-        function distance($lat1, $lon1, $lat2, $lon2, $unit) 
+    
+
+      //start to iterate distance in to array
+         
+  }
+
+
+    function distance($lat1, $lon1, $lat2, $lon2, $unit) 
         {
 
             $theta = $lon1 - $lon2;
@@ -117,11 +124,6 @@ for($i=0;$i<$num;$i++){
 
           }
       }
-
-      //start to iterate distance in to array
-         
-  }
-
   public function summaryShow(Request $request){
 
 
