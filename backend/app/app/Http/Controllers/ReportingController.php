@@ -91,10 +91,7 @@ class ReportingController extends Controller
         $long = DB::table('RideData')->select('Latitude')->where('rideID','=',1)->get();
         $num = count($lat);
 
-//start to iterate distance in to array
-        for($i=0;$i<$num;$i++){
-            $distance=distance($lat[$i],$long[$i],$lat[$i+1],$long[$i+1],"N");
-        }
+
 
 
 //calculate the distance from above
@@ -118,6 +115,11 @@ class ReportingController extends Controller
 
           }
       }
+
+      //start to iterate distance in to array
+        for($i=0;$i<$num;$i++){
+            $distance = distance($lat[$i],$long[$i],$lat[$i+1],$long[$i+1],"N");
+        }
   }
 
   public function summaryShow(Request $request){
