@@ -18,6 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
+Route::get('/v1/sumamrydistance','ReportingController@summaryCreate');
+
 Route::get('/v1/profile/{id}', 'profileController@show');
 
 Route::get('/v1/ride/summary/{id}', 'ReportingController@summaryShow');
