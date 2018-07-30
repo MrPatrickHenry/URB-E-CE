@@ -89,7 +89,7 @@ class ReportingController extends Controller
 //get the data and totals in seperate array
         $lats= DB::table('RideData')->select('Latitude')->where('rideID','=',1)->get();
         $longs = DB::table('RideData')->select('Latitude')->where('rideID','=',1)->get();
-        $num = count($lat);
+        $num = count($lats);
 
 $lats->Latitude;
 $longs->Longitude;
