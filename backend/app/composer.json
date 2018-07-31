@@ -12,7 +12,8 @@
         "laravel/passport": "^6.0",
         "laravel/tinker": "^1.0",
         "sander-van-hooft/laravel-invoicable": "^1.0",
-        "webpatser/laravel-uuid": "^3.0"
+        "webpatser/laravel-uuid": "^3.0",
+        "tymon/jwt-auth": "0.5.*"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

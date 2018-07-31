@@ -81,7 +81,6 @@ public function summaryCreate(Request $request)
 // math for summary
 // inject in to table
 
-
     $uid = 1;
     $rideID = 1;
     $totalDistance = 0;
@@ -89,7 +88,6 @@ public function summaryCreate(Request $request)
 //get the data and totals in seperate array
     $lats= DB::table('RideData')->select('Latitude','Longitude')->where([['USERID','=', $uid],['rideID','=', $rideID]])->get();
     $num = count($lats);
-
 
 //avg speed
     $avgSpeed = DB::table('RideData')->where([['USERID','=', $uid],['rideID','=', $rideID]])->avg('Speed');
