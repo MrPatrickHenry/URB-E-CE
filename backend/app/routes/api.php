@@ -18,10 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => ['api','cors']], function () {
-    Route::post('auth/login', 'ApiController@login');
-    Route::group(['middleware' => 'jwt.auth'], function () {
-        Route::get('user', 'ApiController@getAuthUser');
-    });
+       Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
+    Route::post('authenticate', 'AuthenticateController@authenticate');
 });
 
 
