@@ -16,6 +16,16 @@ use Illuminate\Http\Request;
 
 // Admin routes 
 
+
+Route::group(['prefix' => 'apiLOGIN'], function()
+{
+    Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
+    Route::post('authenticate', 'AuthenticateController@authenticate');
+});
+
+
+
+
 Route::group(['middleware' => 'auth'], function()
 {
 
