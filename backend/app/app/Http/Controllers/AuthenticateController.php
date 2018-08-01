@@ -53,7 +53,7 @@ public function index()
 //     'AuthenticateController@index', ['token' => $JWT]
 // );        // return response()->json(compact('token'));
 
-dd($token);
+dd($JWT);
 return redirect()->action('AuthenticateController@index', ['id' => 1]
 );
 
