@@ -53,7 +53,8 @@ public function index()
 // );        // return response()->json(compact('token'));
 
 
-return redirect()->action('AuthenticateController@index',['id' = 1]);
+return redirect()->action('AuthenticateController@index', ['id' => 1]
+);
 
 
     }
