@@ -24,7 +24,8 @@ public function __construct()
 public function index()
 {
     // Retrieve all the users in the database and return them
-    $users = User::all();
+    // $users = User::all();
+    $users = User::where('id', '=', Auth::id())->get();
     return $users;
 }  
 
