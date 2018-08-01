@@ -8,6 +8,7 @@ use App\Http\ControllersController;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Tymon\JWTAuthExceptions\JWTException;
+use app\user;
 
 class AuthenticateController extends Controller
 {
@@ -43,6 +44,6 @@ public function index()
 
         // if no errors are encountered we can return a JWT
         return response()->json(compact('token'));
-      
+
     }
 }
