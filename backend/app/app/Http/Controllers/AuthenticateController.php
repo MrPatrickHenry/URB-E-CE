@@ -46,16 +46,9 @@ public function index()
         }
 
         // if no errors are encountered we can return a JWT
+        $user->token = $token;
 
-        $JWT=response()->json(compact('token'));
-        // $token=$JWT->token;
-// return redirect()->action(
-//     'AuthenticateController@index', ['token' => $JWT]
-// );        // return response()->json(compact('token'));
-
-dd($JWT);
-return redirect()->action('AuthenticateController@index', ['id' => 1]
-);
+        return $this->response->item($user,new UserTransformer)->withHeader('Token',$token)
 
 
     }
