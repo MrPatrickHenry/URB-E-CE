@@ -12,13 +12,20 @@ use Tymon\JWTAuthExceptions\JWTException;
 class AuthenticateController extends Controller
 {
 
-    public function index()
-    {
-$users = User::all();
+public function __construct()
+   {
+       // Apply the jwt.auth middleware to all methods in this controller
+       // except for the authenticate method. We don't want to prevent
+       // the user from retrieving their token if they don't already have it
+       $this->middleware('jwt.auth', ['except' => ['authenticate']]);
+   }
+
+public function index()
+{
+    // Retrieve all the users in the database and return them
+    $users = User::all();
     return $users;
-
-
-        }    
+}  
 
     public function authenticate(Request $request)
     {
@@ -35,7 +42,7 @@ $users = User::all();
         }
 
         // if no errors are encountered we can return a JWT
-        $users = User::all();
-    return $users;
+        return response()->json(compact('token'));
+      
     }
 }
