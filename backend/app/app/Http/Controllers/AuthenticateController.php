@@ -48,13 +48,13 @@ public function index()
         // if no errors are encountered we can return a JWT
 
         $JWT=response()->json(compact('token'));
-        // $token=$JWT->token;
+        $JWTtoken = $JWT[0]->token;
+
 // return redirect()->action(
 //     'AuthenticateController@index', ['token' => $JWT]
 // );        // return response()->json(compact('token'));
 
-dd($JWT);
-return redirect()->action('AuthenticateController@index', ['id' => 1]
+return redirect()->action('AuthenticateController@index', ['token' => $JWTtoken]
 );
 
 
