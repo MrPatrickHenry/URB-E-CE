@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use IlluminateHttpRequest;
-
-use AppHttpRequests;
-use AppHttpControllersController;
-use JWTAuth;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Http\ControllersController;
+use JWT\Auth;
 use Tymon\JWTAuthExceptions\JWTException;
 
 class AuthenticateController extends Controller
