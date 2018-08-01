@@ -46,8 +46,9 @@ public function index()
         }
 
         // if no errors are encountered we can return a JWT
-        index();
-        // return response()->json(compact('token'));
+return redirect()->action(
+    'AuthenticateController@index', ['token' => response()->json(compact('token'))]
+);        // return response()->json(compact('token'));
 
     }
 }
