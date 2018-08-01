@@ -46,7 +46,8 @@ public function index()
         }
 
         // if no errors are encountered we can return a JWT
-        return response()->json(compact('token'));
+        index();
+        // return response()->json(compact('token'));
 
     }
 }
