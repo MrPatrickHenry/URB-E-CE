@@ -9,6 +9,8 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Tymon\JWTAuthExceptions\JWTException;
 use app\user;
+use Illuminate\Support\Facades\Auth;
+
 
 class AuthenticateController extends Controller
 {
