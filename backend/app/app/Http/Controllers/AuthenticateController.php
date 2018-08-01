@@ -35,7 +35,6 @@ $users = User::all();
         }
 
         // if no errors are encountered we can return a JWT
-        return response()->json(compact('token'));
         $users = User::all();
     return $users;
     }
