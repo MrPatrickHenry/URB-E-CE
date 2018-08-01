@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\ControllersController;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 use Tymon\JWTAuthExceptions\JWTException;
 
 class AuthenticateController extends Controller
