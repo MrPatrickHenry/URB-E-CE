@@ -57,6 +57,27 @@ class mRegisterController extends Controller
         ]);
     }
 
+
+
+
+public function CreateMUser(Request $request)
+{
+    $email = $request->email;
+    $password   = $request->password;
+    $name = $request->name;
+
+
+$userCreation = DB::table('users')->insert([
+        'email' => $email,
+        'password' => $password,  
+        'name' => $name
+          ]);
+
+    echo json_encode($userCreation,JSON_NUMERIC_CHECK); 
+
+}
+
+
     /**
      * Create a new user instance after a valid registration.
      *
