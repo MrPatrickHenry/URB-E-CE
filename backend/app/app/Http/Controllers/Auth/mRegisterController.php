@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
 use DB;
 use Storage;
 use DateTime;
@@ -38,7 +37,7 @@ public function CreateMUser(Request $request)
 
 $userCreation = DB::table('users')->insert([
         'email' => $email,
-        'password' => $password,  
+        'password' => Hash::make($password]),  
         'name' => $name
           ]);
 
