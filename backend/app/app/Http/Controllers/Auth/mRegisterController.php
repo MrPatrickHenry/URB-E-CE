@@ -37,7 +37,7 @@ public function CreateMUser(Request $request)
 
 $userCreation = DB::table('users')->insert([
         'email' => $email,
-        'password' => Hash::make($password]),  
+        'password' => Hash::make($password),  
         'name' => $name
           ]);
 
