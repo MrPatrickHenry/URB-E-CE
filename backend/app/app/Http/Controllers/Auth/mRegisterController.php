@@ -29,7 +29,6 @@ class mRegisterController extends Controller
      * @var string
      */
     // protected $redirectTo = '/home';
-            return response()->json(['Success' => 'registered user'], 200);
 
     /**
      * Create a new controller instance.
@@ -71,5 +70,7 @@ class mRegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
         ]);
+                    return response()->json(['Success' => 'registered user'], 200);
+
     }
 }
