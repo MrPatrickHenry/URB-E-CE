@@ -127,9 +127,8 @@ public function newRiderID(Request $request){
                $NewRiderID = $RiderID[0]->RideID+1;
 
         echo json_encode($NewRiderID,JSON_NUMERIC_CHECK);  
-    } elseif ($RiderID <1)  {
-        $NewRiderID  = 1; 
-        echo json_encode($NewRiderID,JSON_NUMERIC_CHECK);
+    } else {
+        echo json_encode($RiderID,JSON_NUMERIC_CHECK);
     }
 }
 
