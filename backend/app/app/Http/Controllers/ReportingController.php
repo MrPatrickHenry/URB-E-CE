@@ -122,35 +122,36 @@ public function newRiderID(Request $request){
 
     $uid = $request->id;
     $RiderID = DB::table('RideData')->select('RideID')->where('userID','=',$uid)->orderBy('RideID', 'desc')->limit(1)->get();
-   
-if (!empty($RiderID)) 
-    {  
+    if (empty($RiderID){
+        $NewRiderID  = 1;
+        echo json_encode($NewRiderID,JSON_NUMERIC_CHECK);  
+    } else {
       $NewRiderID = $RiderID[0]->RideID+1;
-      } else {
-            echo '$var is either 0, empty, or not set at all';
-        }
-    
+      echo json_encode($NewRiderID,JSON_NUMERIC_CHECK);  
+
+  }
+  
 }
 
-    public function summaryShow(Request $request){
+public function summaryShow(Request $request){
 
 
-        $uid = $request->id;
-        $riderSummary = DB::table('ridesummary')->where('userID','=',$uid)->get();
-        echo json_encode($riderSummary,JSON_NUMERIC_CHECK);  
-    }
+    $uid = $request->id;
+    $riderSummary = DB::table('ridesummary')->where('userID','=',$uid)->get();
+    echo json_encode($riderSummary,JSON_NUMERIC_CHECK);  
+}
 
-    public function odometer(Request $request)
-    {
+public function odometer(Request $request)
+{
 // recieve data from summary and append to odometer in profile
 
-        $uid = $request->id;
+    $uid = $request->id;
 
-        $odometer = DB::table('ridesummary') >where('userId', $uid)
-        ->sum('distance')-get();
+    $odometer = DB::table('ridesummary') >where('userId', $uid)
+    ->sum('distance')-get();
 
-        echo json_encode($odometer,JSON_NUMERIC_CHECK);  
-    }
+    echo json_encode($odometer,JSON_NUMERIC_CHECK);  
+}
 
 
 /**
