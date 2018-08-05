@@ -90,8 +90,9 @@ public function summaryCreate(Request $request)
     $avgSpeed = DB::table('RideData')->where([['USERID','=', $uid],['rideID','=', $rideID]])->avg('Speed');
 
 
-    $MaxSpeed = DB::table('RideData')->where([['USERID','=', $uid],['rideID','=', $rideID]])->orderBy('Speed', 'desc')->limit(1)->get();
-dd($MaxSpeed);
+    $MaxSpeedArray = DB::table('RideData')->select('Speed')->where([['USERID','=', $uid],['rideID','=', $rideID]])->orderBy('Speed', 'desc')->limit(1)->get();
+
+    $MaxSpeed = $MaxSpeedArray[0]->Speed;
     // function distance($lat1, $lon1, $lat2, $lon2) 
     // {
     //     $theta = $lon1 - $lon2;
@@ -111,7 +112,8 @@ dd($MaxSpeed);
         'distance' => 0,
         'rideID' => $rideID,
         'avgSpeed' => $avgSpeed,
-        'maxSpeed' => $MaxSpeed
+        'maxSpeed' => $MaxSpeed,
+        'userID' => $uid
     ]);
             echo json_encode($rideSummaryInsert,JSON_NUMERIC_CHECK); 
 
