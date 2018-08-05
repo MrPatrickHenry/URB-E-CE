@@ -90,19 +90,19 @@ public function summaryCreate(Request $request)
     $avgSpeed = DB::table('RideData')->where([['USERID','=', $uid],['rideID','=', $rideID]])->avg('Speed');
     $MaxSpeed = DB::table('RideData')->where([['USERID','=', $uid],['rideID','=', $rideID]])->orderBy('Speed', 'desc')->limit(1)->get();
 
-    function distance($lat1, $lon1, $lat2, $lon2) 
-    {
-        $theta = $lon1 - $lon2;
-        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
-        $dist = acos($dist);
-        $dist = rad2deg($dist);
-        $miles = $dist * 60 * 1.1515;
-    } 
+    // function distance($lat1, $lon1, $lat2, $lon2) 
+    // {
+    //     $theta = $lon1 - $lon2;
+    //     $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+    //     $dist = acos($dist);
+    //     $dist = rad2deg($dist);
+    //     $miles = $dist * 60 * 1.1515;
+    // } 
 
-    for($i=0;$i<$num;$i++){
-        $distance = distance($lats[$i]->Latitude,$lats[$i]->Longitude,$lats[$i+1]->Latitude,$lats[$i+1]->Longitude);  
+    // for($i=0;$i<$num;$i++){
+    //     $distance = distance($lats[$i]->Latitude,$lats[$i]->Longitude,$lats[$i+1]->Latitude,$lats[$i+1]->Longitude);  
             
-    }
+    // }
 
 
     $rideSummaryInsert = DB::table('ridesummary')->insert([
@@ -110,7 +110,9 @@ public function summaryCreate(Request $request)
         'rideID' => $rideID,
         'avgSpeed' => $avgSpeed,
         'maxSpeed' => $MaxSpeed
-    ]);
+    ])->get();
+            echo json_encode($rideSummaryInsert,JSON_NUMERIC_CHECK); 
+
 
 
 }
