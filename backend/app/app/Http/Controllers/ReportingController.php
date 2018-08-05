@@ -121,8 +121,9 @@ public function newRiderID(Request $request){
 
 
     $uid = $request->id;
+    $RiderID = DB::table('RideData')->select('RideID')->where('userID','=',$uid)->orderBy('RideID', 'desc')->limit(1)->get();
 
-   $NewRiderID =  DB::table('RideData')->select('RideID')->where('userID','=',$uid)->increment('RideID');
+$NewRiderID = $RiderID->RideID + 1;
     echo $NewRiderID; 
 }
 
