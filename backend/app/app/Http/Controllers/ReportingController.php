@@ -101,7 +101,7 @@ public function summaryCreate(Request $request)
 
     for($i=0;$i<$num;$i++){
         $distance = distance($lats[$i]->Latitude,$lats[$i]->Longitude,$lats[$i+1]->Latitude,$lats[$i+1]->Longitude);  
-        dd($distance);      
+            
     }
 
 
