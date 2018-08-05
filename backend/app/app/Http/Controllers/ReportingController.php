@@ -122,7 +122,7 @@ public function newRiderID(Request $request){
 
     $uid = $request->id;
     $RiderID = DB::table('RideData')->select('RideID')->where('userID','=',$uid)->orderBy('RideID', 'desc')->limit(1)->get();
-
+dd($RiderID);
 $NewRiderID = $RiderID[0]->RideID+1;
     echo $NewRiderID; 
 }
