@@ -46,8 +46,8 @@ public function store(Request $request)
     $Heading = $request->Heading;
     $Speed = $request->Speed;
     $time = $request->timestamp;
-    $RideID = 3;
-    $USERID = 2;
+    $RideID = $request->rid;
+    $USERID = $request->USERID;
     $now = new DateTime();
     $x = $request->xvalue;
     $y = $request->yvalue;
