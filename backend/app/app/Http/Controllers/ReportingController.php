@@ -122,7 +122,7 @@ public function newRiderID(Request $request){
 
     $uid = $request->id;
     $NewRiderID = DB::table('RideData')->select('RideID')->where('userID','=',$uid)->orderBy('RideID', 'desc')->limit(1)->get();
-    echo json_encode($NewRiderID,JSON_NUMERIC_CHECK);  
+    echo $NewRiderID; 
 }
 
 public function summaryShow(Request $request){
