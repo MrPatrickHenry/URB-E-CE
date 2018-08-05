@@ -123,7 +123,10 @@ $NewRiderID = 0;
     $uid = $request->id;
     $RiderID = DB::table('RideData')->select('RideID')->where('userID','=',$uid)->orderBy('RideID', 'desc')->limit(1)->get();
 
-    if ($RiderID.count == 0) {
+
+$countobj = count($RiderID);
+
+    if ($countobj == 0) {
 $NewRiderID  = 1;
 echo json_encode($NewRiderID,JSON_NUMERIC_CHECK); 
 } else {
