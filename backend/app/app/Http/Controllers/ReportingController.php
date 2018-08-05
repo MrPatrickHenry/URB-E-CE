@@ -47,7 +47,7 @@ public function store(Request $request)
     $Speed = $request->Speed;
     $time = $request->timestamp;
     $RideID = $request->rid;
-    $USERID = $request->USERIDxocde;
+    $USERID = $request->USERID;
     $now = new DateTime();
     $x = $request->xvalue;
     $y = $request->yvalue;
@@ -67,11 +67,8 @@ public function store(Request $request)
         'x' => $x,
         'y' => $y,
         'z' => $z
-
     ]);
-
     echo json_encode($rideInsert,JSON_NUMERIC_CHECK); 
-
 }
 
 
@@ -118,27 +115,20 @@ public function summaryCreate(Request $request)
 
 }
 public function newRiderID(Request $request){
-
-$NewRiderID = 0;
     $uid = $request->id;
     $RiderID = DB::table('RideData')->select('RideID')->where('userID','=',$uid)->orderBy('RideID', 'desc')->limit(1)->get();
 
-
-$countobj = count($RiderID);
-
+//count the array incase its empty 
+        $countobj = count($RiderID);
+//make sure a new record can be run if new user
     if ($countobj == 0) {
-$NewRiderID  = 1;
-echo json_encode($NewRiderID,JSON_NUMERIC_CHECK); 
-} else {
-    $NewRiderID = $RiderID[0]->RideID+1;
-    echo json_encode($NewRiderID,JSON_NUMERIC_CHECK); 
-}
-    // incase new user has no rides yet
-    // echo $RiderID;
-    // if ( $RiderID[0]->RideID <1 ) {
-    //         echo json_encode($NewRiderID+1,JSON_NUMERIC_CHECK); 
-    //                    // $NewRiderID = $RiderID[0]->RideID+1;
-    // } 
+        $NewRiderID  = 1;
+        echo json_encode($NewRiderID,JSON_NUMERIC_CHECK); 
+    } else {
+        $NewRiderID = $RiderID[0]->RideID+1;
+        echo json_encode($NewRiderID,JSON_NUMERIC_CHECK); 
+    }
+    
 }
 
 public function summaryShow(Request $request){
