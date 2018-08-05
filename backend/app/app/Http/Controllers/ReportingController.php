@@ -125,10 +125,10 @@ public function newRiderID(Request $request){
    
     if ($RiderID) {
         $NewRiderID = $RiderID[0]->RideID+1;
-        else {
+      }  else {
             echo '$var is either 0, empty, or not set at all';
         }
-    }
+    
 }
 
     public function summaryShow(Request $request){
