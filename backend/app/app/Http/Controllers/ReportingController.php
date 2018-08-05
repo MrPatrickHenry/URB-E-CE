@@ -117,8 +117,14 @@ public function summaryCreate(Request $request)
 
 
 }
+public function newRiderID(Request $request){
 
 
+    $uid = $request->id;
+    $NewRiderID = DB::table('RideData')->select('RideID')->where('userID','=',$uid)->orderBy('RideID', 'desc')->limit(1)->get();
+    $NewRiderIDIncremented = $NewRiderID+1;
+    echo json_encode($NewRiderIDIncremented,JSON_NUMERIC_CHECK);  
+}
 
 public function summaryShow(Request $request){
 
