@@ -45,6 +45,8 @@ Route::POST('/v1/profile/{id}/ride/{rid}/sumamrydistance','ReportingController@s
 
 Route::get('/v1/profile/{id}', 'profileController@show');
 
+Route::POST('/v1/profile/{id}', 'profileController@update');
+
 Route::get('/v1/ride/summary/{id}', 'ReportingController@summaryShow');
 
 Route::post('/v1/ride/', 'ReportingController@store');
