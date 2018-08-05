@@ -122,8 +122,13 @@ public function newRiderID(Request $request){
 $NewRiderID = 0;
     $uid = $request->id;
     $RiderID = DB::table('RideData')->select('RideID')->where('userID','=',$uid)->orderBy('RideID', 'desc')->limit(1)->get();
+
+    if ($RiderID == null) {
+$NewRiderID  = 1;
+echo json_encode($NewRiderID,JSON_NUMERIC_CHECK); 
+}
     // incase new user has no rides yet
-    echo $RiderID;
+    // echo $RiderID;
     // if ( $RiderID[0]->RideID <1 ) {
     //         echo json_encode($NewRiderID+1,JSON_NUMERIC_CHECK); 
     //                    // $NewRiderID = $RiderID[0]->RideID+1;
