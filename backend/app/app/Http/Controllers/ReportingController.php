@@ -123,9 +123,10 @@ public function newRiderID(Request $request){
     $uid = $request->id;
     $RiderID = DB::table('RideData')->select('RideID')->where('userID','=',$uid)->orderBy('RideID', 'desc')->limit(1)->get();
    
-    if ($RiderID) {
-        $NewRiderID = $RiderID[0]->RideID+1;
-      }  else {
+if (!empty($RiderID)) 
+    {  
+      $NewRiderID = $RiderID[0]->RideID+1;
+      } else {
             echo '$var is either 0, empty, or not set at all';
         }
     
