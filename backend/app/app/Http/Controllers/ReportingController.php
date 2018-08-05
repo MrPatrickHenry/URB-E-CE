@@ -79,7 +79,7 @@ public function summaryCreate(Request $request)
 // inject in to table
 
      $uid = $request->id;
-    $rideID $request->rid;;
+    $rideID $request->rid;
     $totalDistance = 0;
 
 //get the data and totals in seperate array
