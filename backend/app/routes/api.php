@@ -43,7 +43,7 @@ Route::group(['middleware' => ['api']], function () {
 
 Route::get('/v1/profile/{id}/ride/{rid} sumamrydistance','ReportingController@summaryCreate');
 
-Route::get('/v1/profile/{id}/ride/{rid}', 'profileController@show');
+Route::get('/v1/profile/{id}', 'profileController@show');
 
 Route::get('/v1/ride/summary/{id}', 'ReportingController@summaryShow');
 
