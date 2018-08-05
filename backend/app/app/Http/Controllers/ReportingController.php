@@ -47,7 +47,7 @@ public function store(Request $request)
     $Speed = $request->Speed;
     $time = $request->timestamp;
     $RideID = $request->rid;
-    $USERID = $request->USERID;
+    $USERID = $request->USERIDxocde;
     $now = new DateTime();
     $x = $request->xvalue;
     $y = $request->yvalue;
@@ -122,6 +122,7 @@ public function newRiderID(Request $request){
 
     $uid = $request->id;
     $RiderID = DB::table('RideData')->select('RideID')->where('userID','=',$uid)->orderBy('RideID', 'desc')->limit(1)->get();
+    dd($RiderID);
 $NewRiderID = $RiderID[0]->RideID+1;
     echo json_encode($NewRiderID,JSON_NUMERIC_CHECK);  
 }
