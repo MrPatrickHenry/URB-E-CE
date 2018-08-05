@@ -126,6 +126,9 @@ $NewRiderID = 0;
     if ($RiderID == null) {
 $NewRiderID  = 1;
 echo json_encode($NewRiderID,JSON_NUMERIC_CHECK); 
+} else {
+    $NewRiderID = $RiderID[0]->RideID+1;
+    echo json_encode($NewRiderID,JSON_NUMERIC_CHECK); 
 }
     // incase new user has no rides yet
     // echo $RiderID;
