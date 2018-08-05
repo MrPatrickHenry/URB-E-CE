@@ -121,9 +121,8 @@ public function newRiderID(Request $request){
 
 
     $uid = $request->id;
-    $NewRiderID = DB::table('RideData')->select('RideID'+1)->where('userID','=',$uid)->orderBy('RideID', 'desc')->limit(1)->get();
-    $NewRiderIDIncremented = $NewRiderID+1;
-    echo json_encode($NewRiderIDIncremented,JSON_NUMERIC_CHECK);  
+    $NewRiderID = DB::table('RideData')->select('RideID')->where('userID','=',$uid)->orderBy('RideID', 'desc')->limit(1)->get();
+    echo json_encode($NewRiderID,JSON_NUMERIC_CHECK);  
 }
 
 public function summaryShow(Request $request){
