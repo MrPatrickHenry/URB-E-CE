@@ -155,6 +155,17 @@ public function odometer(Request $request)
 }
 
 
+
+public function yellowJacket(Request $request)
+{
+// recieve data from summary and append to odometer in profile
+    // sum of distance 
+    $odometerYellowJacket = DB::table('users')->select('name','user_profile_avatar','odmoeter')->where([['active','=','active'],['publicShare','=',1]])->orderBy('odmoeter','desc')->limit(10)->get();
+            echo json_encode($odometerYellowJacket,JSON_NUMERIC_CHECK); 
+
+}
+
+
 /**
  * Display the specified resource.
  *
