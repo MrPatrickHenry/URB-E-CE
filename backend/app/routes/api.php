@@ -21,14 +21,13 @@ Route::post('/v1/mregister/', 'Auth\mRegisterController@CreateMUser');
 
 Route::post('/v1/newRiderID/{id}', 'ReportingController@newRiderID');
 
-
-
-
 Route::group(['prefix' => 'v1'], function()
 {
     Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
     Route::post('authenticate', 'AuthenticateController@authenticate');
 });
+
+
 
 Route::group(['middleware' => ['api']], function () {
     Route::post('auth/login', 'ApiController@login');
@@ -40,12 +39,12 @@ Route::group(['middleware' => ['api']], function () {
 
 
 
+Route::POST('/v1/profile/{id}/odometer', 'ReportingController@odometer');
 
 Route::POST('/v1/profile/{id}/ride/{rid}/sumamrydistance','ReportingController@summaryCreate');
 
 Route::get('/v1/profile/{id}', 'profileController@show');
 
 Route::get('/v1/ride/summary/{id}', 'ReportingController@summaryShow');
-
 
 Route::post('/v1/ride/', 'ReportingController@store');

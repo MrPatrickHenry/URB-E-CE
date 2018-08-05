@@ -138,8 +138,6 @@ public function newRiderID(Request $request){
 }
 
 public function summaryShow(Request $request){
-
-
     $uid = $request->id;
     $riderSummary = DB::table('ridesummary')->where('userID','=',$uid)->get();
     echo json_encode($riderSummary,JSON_NUMERIC_CHECK);  
@@ -150,11 +148,10 @@ public function odometer(Request $request)
 // recieve data from summary and append to odometer in profile
 
     $uid = $request->id;
-
-    $odometer = DB::table('ridesummary') >where('userId', $uid)
-    ->sum('distance')-get();
-
-    echo json_encode($odometer,JSON_NUMERIC_CHECK);  
+    // sum of distance 
+    $odometer = DB::table('ridesummary')->where('userId', $uid)->sum('distance');
+    // insert to odmoter
+    $odmoterInsert = DB::table('users')->where('id', $uid)->update(['odmoeter' => $odometer]);
 }
 
 
