@@ -125,12 +125,11 @@ public function newRiderID(Request $request){
     if (empty($RiderID){
         $NewRiderID  = 1;
         echo json_encode($NewRiderID,JSON_NUMERIC_CHECK);  
-    } else {
+    }else{
       $NewRiderID = $RiderID[0]->RideID+1;
       echo json_encode($NewRiderID,JSON_NUMERIC_CHECK);  
-
   }
-  
+
 }
 
 public function summaryShow(Request $request){
