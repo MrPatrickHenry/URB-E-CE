@@ -121,7 +121,7 @@ public function newRiderID(Request $request){
 
 $NewRiderID = 0;
     $uid = $request->id;
-    $RiderID = DB::table('RideData')->select('RideID')->where('userID','=',$uid)->orderBy('RideID', 'desc')->limit(1)->get();
+    $RiderID = DB::table('RideData')->select('RideID')->where('userID','=',$uid)->orderBy('RideID', 'desc')->limit(1);
     // incase new user has no rides yet
     
     if ( $RiderID[0]->RideID <1 ) {
