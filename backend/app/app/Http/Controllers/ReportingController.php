@@ -94,8 +94,8 @@ public function store(Request $request)
 public function odometer(Request $request)
 {
 // recieve data from summary and append to odometer in profile
-$carCO2 = 7.93664;
-$urbe = 0.0075376047441;
+    $carCO2 = 7.93664;
+    $urbe = 0.0075376047441;
 
     $uid = $request->id;
     // sum of distance 
@@ -112,50 +112,49 @@ $urbe = 0.0075376047441;
 
 public function summaryCreate(Request $request)
 {
-// get data ready for math
-// math for summary
-// inject in to table
-$carCO2 = 7.93664;
-$urbe = 0.0075376047441;
-     $uid = $request->id;
+//starting vars for workload
+    $carCO2 = 7.93664;
+    $urbe = 0.0075376047441;
+    $uid = $request->id;
     $rideID = $request->rid;
     $totalDistance = 0;
-
-        $now = new DateTime();
-
-
-//get the data and totals in seperate array
+    $now = new DateTime();
+//dev
+    // $uid = 2;
+    // $rideID =4;
+//location
     $lats= DB::table('RideData')->select('Latitude','Longitude')->where([['USERID','=', $uid],['rideID','=', $rideID]])->get();
     $num = count($lats);
 
-//avg & max speed
+
+//Speed
     $avgSpeed = DB::table('RideData')->where([['USERID','=', $uid],['rideID','=', $rideID]])->avg('Speed');
 
     $MaxSpeedArray = DB::table('RideData')->select('Speed')->where([['USERID','=', $uid],['rideID','=', $rideID]])->orderBy('Speed', 'desc')->limit(1)->get();
 
     $MaxSpeed = $MaxSpeedArray[0]->Speed;
 
-// Duration
+//Time
     $TimestampDateandTime = DB::table('RideData')->select('timestamp')->where([['USERID','=', $uid],['rideID','=', $rideID]])->orderBy('timestamp', 'asc')->get();
-$timeSTmapsArray = json_decode($TimestampDateandTime);
-$StartTime = array_first($timeSTmapsArray) ;
-$EndTime = array_last($timeSTmapsArray) ;
+    $timeSTmapsArray = json_decode($TimestampDateandTime);
+    $StartTime = array_first($timeSTmapsArray) ;
+    $EndTime = array_last($timeSTmapsArray) ;
 
-$stime = data_get($StartTime,'timestamp');
-$etime = data_get($EndTime,'timestamp');
+    $stime = data_get($StartTime,'timestamp');
+    $etime = data_get($EndTime,'timestamp');
 
-$sdate = new DateTime($stime);
-$edate = new DateTime($etime);
-$diff = date_diff($sdate,$edate);
-$time = $diff->h;
-
-$distance = $avgSpeed * $time;
+    $sdate = new DateTime($stime);
+    $edate = new DateTime($etime);
+    $diff = date_diff($sdate,$edate);
+    $time = $diff->h;
+//distance
+    $distance = $avgSpeed * $time;
 
 
 //carbonfootprint
 
-$urbeGreen = $urbe * $distance;
-$carGreen = $carCO2 * $distance;
+    $urbeGreen = $urbe * $distance;
+    $carGreen = $carCO2 * $distance;
 
 
     // google maps distanc
@@ -170,7 +169,7 @@ $carGreen = $carCO2 * $distance;
 
     // for($i=0;$i<$num;$i++){
     //     $distance = distance($lats[$i]->Latitude,$lats[$i]->Longitude,$lats[$i+1]->Latitude,$lats[$i+1]->Longitude);  
-            
+
     // }
 
 
@@ -184,9 +183,9 @@ $carGreen = $carCO2 * $distance;
         'eCO2' => $urbeGreen,
         'cCO2' => $carGreen
     ]);
-            echo json_encode($rideSummaryInsert,JSON_NUMERIC_CHECK); 
+    echo json_encode($rideSummaryInsert,JSON_NUMERIC_CHECK); 
 
-return $this->odometer($request);
+    return $this->odometer($request);
 
 }
 public function newRiderID(Request $request){
@@ -194,7 +193,7 @@ public function newRiderID(Request $request){
     $RiderID = DB::table('RideData')->select('RideID')->where('userID','=',$uid)->orderBy('RideID', 'desc')->limit(1)->get();
 
 //count the array incase its empty 
-        $countobj = count($RiderID);
+    $countobj = count($RiderID);
 //make sure a new record can be run if new user
     if ($countobj == 0) {
         $NewRiderID  = 1;
@@ -221,7 +220,7 @@ public function yellowJacket(Request $request)
 // recieve data from summary and append to odometer in profile
     // sum of distance 
     $odometerYellowJacket = DB::table('users')->select('name','user_profile_avatar','odmoeter')->where([['active','=','active'],['publicShare','=',1]])->orderBy('odmoeter','desc')->limit(10)->get();
-            echo json_encode($odometerYellowJacket,JSON_NUMERIC_CHECK); 
+    echo json_encode($odometerYellowJacket,JSON_NUMERIC_CHECK); 
 
 }
 
