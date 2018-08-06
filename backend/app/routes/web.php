@@ -15,7 +15,9 @@ use Illuminate\Http\Request;
 
 
 // Admin routes 
-
+Route::get('/admin', function () {
+    return view('admin');
+});
 
 
 Route::group(['middleware' => 'auth'], function()
