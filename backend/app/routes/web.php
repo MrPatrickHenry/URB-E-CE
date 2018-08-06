@@ -19,6 +19,8 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
+Route::get('/dcalc', 'ReportingController@DistanceCalculator');
+
 
 Route::group(['middleware' => 'auth'], function()
 {
