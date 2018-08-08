@@ -106,7 +106,7 @@ public function odometer(Request $request)
     // insert to odmoter
     $odmoterInsert = DB::table('users')->where('id', $uid)->update(['odmoeter' => $odometer, 'eCO2' => $urbeGreen, 'cCO2' => $carGreen]);
 
-    return LastRideShow($request);
+    return $this->LastRideShow($request);
 
 }
 
