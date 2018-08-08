@@ -27,17 +27,12 @@ Route::group(['prefix' => 'v1'], function()
     Route::post('authenticate', 'AuthenticateController@authenticate');
 });
 
-
-
 Route::group(['middleware' => ['api']], function () {
     Route::post('auth/login', 'ApiController@login');
     Route::group(['middleware' => 'jwt.auth'], function () {
         Route::get('user', 'ApiController@getAuthUser');
     });
 });
-
-
-
 
 Route::POST('/v1/profile/{id}/odometer', 'ReportingController@odometer');
 
@@ -52,3 +47,5 @@ Route::get('/v1/ride/summary/{id}', 'ReportingController@summaryShow');
 Route::post('/v1/ride/', 'ReportingController@store');
 
 Route::get('/v1/ride/yellowjacket', 'ReportingController@yellowJacket');
+
+Route::get('/v1/ride/summary/profile/{uid}', 'ReportingController@summaryShow');
