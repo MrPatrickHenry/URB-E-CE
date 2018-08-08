@@ -212,7 +212,12 @@ public function summaryShow(Request $request){
 }
 
 
+public function LastRideShow(Request $request){
+    $uid = $request->id;
+    $riderSummary = DB::table('ridesummary')->where('userID','=',$uid)->orderby('id','desc')->limit(1)->get();
 
+    echo json_encode($riderSummary,JSON_NUMERIC_CHECK);  
+}
 
 
 public function yellowJacket(Request $request)

@@ -49,3 +49,5 @@ Route::post('/v1/ride/', 'ReportingController@store');
 Route::get('/v1/ride/yellowjacket', 'ReportingController@yellowJacket');
 
 Route::get('/v1/ride/summary/profile/{id}', 'ReportingController@summaryShow');
+
+Route::post('/v1/ride/sumamry/last/ride/{id}','ReportingController@LastRideShow');
