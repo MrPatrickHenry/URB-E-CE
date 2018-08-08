@@ -106,6 +106,7 @@ public function odometer(Request $request)
     // insert to odmoter
     $odmoterInsert = DB::table('users')->where('id', $uid)->update(['odmoeter' => $odometer, 'eCO2' => $urbeGreen, 'cCO2' => $carGreen]);
 
+    return $this->LastRideShow($request);
 
 }
 
@@ -214,9 +215,9 @@ public function summaryShow(Request $request){
 
 public function LastRideShow(Request $request){
     $uid = $request->id;
-    $riderSummary = DB::table('ridesummary')->where('userID','=',$uid)->orderby('id','desc')->limit(1)->get();
+    $lastRiderSummary = DB::table('ridesummary')->where('userID','=',$uid)->orderby('id','desc')->limit(1)->get();
 
-    echo json_encode($riderSummary,JSON_NUMERIC_CHECK);  
+    echo json_encode($lastRiderSummary,JSON_NUMERIC_CHECK);  
 }
 
 
