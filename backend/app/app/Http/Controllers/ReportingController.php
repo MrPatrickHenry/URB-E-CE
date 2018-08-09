@@ -125,8 +125,14 @@ public function summaryCreate(Request $request)
     // $rideID =4;
 //location
     $lats= DB::table('RideData')->select('Latitude','Longitude')->where([['USERID','=', $uid],['rideID','=', $rideID]])->get();
+
+
     $num = count($lats);
 
+    if ($num == 0){
+          return response('No Record Created', 200)
+                  ->header('Content-Type', 'text/plain');
+    }
 
 //Speed
     $avgSpeed = DB::table('RideData')->where([['USERID','=', $uid],['rideID','=', $rideID]])->avg('Speed');
@@ -192,7 +198,6 @@ public function summaryCreate(Request $request)
 public function newRiderID(Request $request){
     $uid = $request->id;
     $RiderID = DB::table('RideData')->select('RideID')->where('userID','=',$uid)->orderBy('RideID', 'desc')->limit(1)->get();
-
 //count the array incase its empty 
     $countobj = count($RiderID);
 //make sure a new record can be run if new user
@@ -227,7 +232,6 @@ public function yellowJacket(Request $request)
     // sum of distance 
     $odometerYellowJacket = DB::table('users')->select('name','user_profile_avatar','odmoeter')->where([['active','=','active'],['publicShare','=',1]])->orderBy('odmoeter','desc')->limit(10)->get();
     echo json_encode($odometerYellowJacket,JSON_NUMERIC_CHECK); 
-
 }
 
 
