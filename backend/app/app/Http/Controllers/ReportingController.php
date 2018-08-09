@@ -131,7 +131,7 @@ public function summaryCreate(Request $request)
 
     if ($num == 0){
           return response('No Record Created', 200)
-                  ->header('Content-Type', 'text/plain');
+                  ->header('Content-Type', 'json');
     }
 
 //Speed
