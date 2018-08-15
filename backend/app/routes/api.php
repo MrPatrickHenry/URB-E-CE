@@ -50,4 +50,6 @@ Route::get('/v1/ride/yellowjacket', 'ReportingController@yellowJacket');
 
 Route::get('/v1/ride/summary/profile/{id}', 'ReportingController@summaryShow');
 
-Route::post('/v1/ride/sumamry/last/ride/{id}','ReportingController@LastRideShow');
+Route::post('/v1/ride/sumamry/last/ride/user/{id}','ReportingController@LastRideShow');
+
+Route::get('/v1/user/{id}/ride/summary/map/{rid}','ReportingController@mapLatLong');

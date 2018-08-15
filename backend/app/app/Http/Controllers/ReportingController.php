@@ -218,8 +218,17 @@ public function summaryShow(Request $request){
 }
 
 
+public function mapLatLong(Request $request){
+    $uid = $request->id;
+    $rid = $request->rid;
+
+    $latsNLongs = DB::table('RideData')->select('Latitude as lat','Longitude as lng')->where([['userID','=',$uid],['RideID','=',$rid]])->get();
+    echo json_encode($latsNLongs,JSON_NUMERIC_CHECK);  
+}
+
 public function LastRideShow(Request $request){
     $uid = $request->id;
+
     $lastRiderSummary = DB::table('ridesummary')->where('userID','=',$uid)->orderby('id','desc')->limit(1)->get();
 
     echo json_encode($lastRiderSummary,JSON_NUMERIC_CHECK);  
@@ -230,7 +239,7 @@ public function yellowJacket(Request $request)
 {
 // recieve data from summary and append to odometer in profile
     // sum of distance 
-    $odometerYellowJacket = DB::table('users')->select('name','user_profile_avatar','odmoeter')->where([['active','=','active'],['publicShare','=',1]])->orderBy('odmoeter','desc')->limit(10)->get();
+    $odometerYellowJacket = DB::table('users')->select('name','user_profile_avatar','odmoeter','eCO2')->where([['active','=','active'],['publicShare','=',1]])->orderBy('odmoeter','desc')->limit(10)->get();
     echo json_encode($odometerYellowJacket,JSON_NUMERIC_CHECK); 
 }
 
