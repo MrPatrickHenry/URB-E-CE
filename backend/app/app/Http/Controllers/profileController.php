@@ -80,6 +80,10 @@ class profileController extends Controller
      */
     public function update(Request $request)
     {
+
+
+      dd(Input::all()); 
+
        $now = new DateTime();
        $uid = $request->id;
        $nameUpdated = $request->name;
@@ -92,7 +96,6 @@ class profileController extends Controller
        $metric = $request->metric;
        $devices = $request->devices;
 
-dd(Input::all()); 
 
 
 
