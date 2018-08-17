@@ -82,7 +82,7 @@ class profileController extends Controller
     {
 
 
-      dd($request); 
+      // dd($request); 
 
        $now = new DateTime();
        $uid = $request->id;
