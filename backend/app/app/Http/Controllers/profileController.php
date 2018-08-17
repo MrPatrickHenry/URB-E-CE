@@ -92,6 +92,10 @@ class profileController extends Controller
        $metric = $request->metric;
        $devices = $request->devices;
 
+dd(Input::all()); 
+
+
+
        $userUpdate = DB::table('users')->where('id', $uid)->update(
         ['name' => $nameUpdated,
         'email' => $emailUpdated,
