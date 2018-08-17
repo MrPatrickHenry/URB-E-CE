@@ -68,7 +68,10 @@ public function store(Request $request)
         'y' => $y,
         'z' => $z
     ]);
-    echo json_encode($rideInsert,JSON_NUMERIC_CHECK); 
+    // echo json_encode($rideInsert,JSON_NUMERIC_CHECK); 
+    return response( json_encode('Success Added',JSON_NUMERIC_CHECK), 200)
+       ->header('Content-Type', 'application/json')->header(
+        'Success', 200);
 }
 
 // public function DistanceCalculator(){

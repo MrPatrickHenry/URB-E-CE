@@ -57,7 +57,8 @@ class profileController extends Controller
     {
        $uid = $request->id;
        $AccountInfo = DB::table('users')->select('name', 'email','created_at','email','account_type','active','user_profile_avatar','devices','gender','height','weight','publicShare','metric')->where('id','=',$uid)->get();
-       echo json_encode($AccountInfo,JSON_NUMERIC_CHECK);  
+       echo json_encode($AccountInfo,JSON_NUMERIC_CHECK)->header(
+        'Success', 200);  
    }
 
     /**
@@ -111,7 +112,8 @@ class profileController extends Controller
         'metric' => $metric,
         'devices' => $devices]);
        return response( json_encode('Success Updated',JSON_NUMERIC_CHECK), 200)
-       ->header('Content-Type', 'application/json');
+       ->header('Content-Type', 'application/json')->header(
+        'Success', 200);
    }
 
 
@@ -131,8 +133,9 @@ class profileController extends Controller
      // return response($userUpdate)
      // ->header('Content-Type', 'application/json');
 
-       return response('Success Updated', 200)
-       ->header('Content-Type', 'application/json');
+      return response( json_encode('Success Updated',JSON_NUMERIC_CHECK), 200)
+       ->header('Content-Type', 'application/json')->header(
+        'Success', 200);
    }
 
     /**

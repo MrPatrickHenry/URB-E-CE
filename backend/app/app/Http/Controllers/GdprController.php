@@ -85,9 +85,9 @@ class GdprController extends Controller
         ['gdpr' => $gdprupdate,
         'updated_at' => $now
         ]);
-
- return response('Success Updated', 200)
-                  ->header('Content-Type', 'application/json');
+return response( json_encode('Success Updated',JSON_NUMERIC_CHECK), 200)
+       ->header('Content-Type', 'application/json')->header(
+        'Success', 200);
  }
 
 
@@ -111,7 +111,10 @@ class GdprController extends Controller
         'gdpr' => '0',
         'updated_at' => $now
         ]);
-     
- return response('Success Updated', 200)
-                  ->header('Content-Type', 'application/json');    }
+    return response( json_encode('Success Updated',JSON_NUMERIC_CHECK), 200)
+       ->header('Content-Type', 'application/json')->header(
+        'Success', 200); 
+
+
+                    }
 }
