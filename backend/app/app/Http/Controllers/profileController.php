@@ -110,7 +110,7 @@ class profileController extends Controller
         'publicShare' => $publicShare,
         'metric' => $metric,
         'devices' => $devices]);
-       return response('Success Updated', 200)
+       return response( json_encode('Success Updated',JSON_NUMERIC_CHECK), 200)
        ->header('Content-Type', 'application/json');
    }
 
