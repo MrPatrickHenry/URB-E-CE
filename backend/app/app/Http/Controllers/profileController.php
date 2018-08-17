@@ -55,14 +55,10 @@ class profileController extends Controller
      */
     public function show( Request $request)
     {
-
-        $uid = $request->id;
-        $AccountInfo = DB::table('users')->select('name', 'email','created_at','email','account_type','active','user_profile_avatar','devices','gender','height','weight','publicShare','metric')->where('id','=',$uid)->get();
-
-
-
-        echo json_encode($AccountInfo,JSON_NUMERIC_CHECK);  
-    }
+       $uid = $request->id;
+       $AccountInfo = DB::table('users')->select('name', 'email','created_at','email','account_type','active','user_profile_avatar','devices','gender','height','weight','publicShare','metric')->where('id','=',$uid)->get();
+       echo json_encode($AccountInfo,JSON_NUMERIC_CHECK);  
+   }
 
     /**
      * Show the form for editing the specified resource.
@@ -84,37 +80,53 @@ class profileController extends Controller
      */
     public function update(Request $request)
     {
-     $now = new DateTime();
-     $uid = $request->id;
-     $nameUpdated = $request->name;
-     $emailUpdated = $request->email;
-    $profilepic = $request->file('profilepic')->store('profile_pictures');
-     $gender = $request->gender;
-     $height = $request->height;
-     $weight = $request->weight;
-     $publicShare = $request->publicShare;
-     $metric = $request->metric;
-     $devices = $request->devices;
-   
-     $userUpdate = DB::table('users')->where('id', $uid)->update(
+       $now = new DateTime();
+       $uid = $request->id;
+       $nameUpdated = $request->name;
+       $emailUpdated = $request->email;
+       $profilepic = $request->file('profilepic')->store('profile_pictures');
+       $gender = $request->gender;
+       $height = $request->height;
+       $weight = $request->weight;
+       $publicShare = $request->publicShare;
+       $metric = $request->metric;
+       $devices = $request->devices;
+
+       $userUpdate = DB::table('users')->where('id', $uid)->update(
         ['name' => $nameUpdated,
         'email' => $emailUpdated,
         'updated_at' => $now,
-    'user_profile_avatar' => $profilepic,
+        'user_profile_avatar' => $profilepic,
         'gender' => $gender,
         'height' => $height,
         'weight' => $weight,
         'publicShare' => $publicShare,
         'metric' => $metric,
         'devices' => $devices]);
+       return response('Success Updated', 200)
+       ->header('Content-Type', 'application/json');
+   }
+
+
+
+    public function passwordUpdate(Request $request)
+    {
+       $now = new DateTime();
+       $uid = $request->id;
+       $password = $request->password;
+       
+       $userUpdate = DB::table('users')->where('id', $uid)->update(
+        [
+        'password' => Hash::make($password),  
+        'updated_at' => $now,
+        ]);
 
      // return response($userUpdate)
      // ->header('Content-Type', 'application/json');
 
- return response('Success Updated', 200)
-                  ->header('Content-Type', 'application/json');
- }
-
+       return response('Success Updated', 200)
+       ->header('Content-Type', 'application/json');
+   }
 
     /**
      * Remove the specified resource from storage.
