@@ -58,6 +58,9 @@ class profileController extends Controller
 
         $uid = $request->id;
         $AccountInfo = DB::table('users')->select('name', 'email','created_at','email','account_type','active','user_profile_avatar','devices','gender','height','weight','publicShare','metric')->where('id','=',$uid)->get();
+
+
+
         echo json_encode($AccountInfo,JSON_NUMERIC_CHECK);  
     }
 
