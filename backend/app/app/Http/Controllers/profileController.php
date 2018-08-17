@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use DB;
 use DateTime;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Webpatser\Uuid\Uuid;
@@ -84,8 +85,7 @@ class profileController extends Controller
      $uid = $request->id;
      $nameUpdated = $request->name;
      $emailUpdated = $request->email;
-     // $profilepic = $request->file('profilepic')->store('profile_pictures');
-     $profilepic = $request->user_profile_avatar;
+    $profilepic = $request->file('profilepic')->store('profile_pictures');
      $gender = $request->gender;
      $height = $request->height;
      $weight = $request->weight;
@@ -93,9 +93,6 @@ class profileController extends Controller
      $metric = $request->metric;
      $devices = $request->devices;
    
-
-
-
      $userUpdate = DB::table('users')->where('id', $uid)->update(
         ['name' => $nameUpdated,
         'email' => $emailUpdated,
@@ -108,9 +105,11 @@ class profileController extends Controller
         'metric' => $metric,
         'devices' => $devices]);
 
-     return response($userUpdate)
-     ->header('Content-Type', 'application/json');
+     // return response($userUpdate)
+     // ->header('Content-Type', 'application/json');
 
+ return response('Success Updated', 200)
+                  ->header('Content-Type', 'application/json');
  }
 
 

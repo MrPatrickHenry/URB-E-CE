@@ -17,15 +17,28 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/v1/mregister/', 'Auth\mRegisterController@CreateMUser');
+Route::post('/mregister/', 'Auth\mRegisterController@CreateMUser');
 
-Route::post('/v1/newRiderID/{id}', 'ReportingController@newRiderID');
+Route::post('/newRiderID/{id}', 'ReportingController@newRiderID');
 
 Route::group(['prefix' => 'v1'], function()
 {
     Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
     Route::post('authenticate', 'AuthenticateController@authenticate');
-});
+
+    // v1 routes
+    Route::POST('/profile/{id}/odometer', 'ReportingController@odometer');
+Route::POST('/profile/{id}/ride/{rid}/sumamrydistance','ReportingController@summaryCreate');
+Route::get('/profile/{id}', 'profileController@show');
+Route::POST('/profile/{id}', 'profileController@update');
+Route::get('/ride/summary/{id}', 'ReportingController@summaryShow');
+Route::post('/ride/', 'ReportingController@store');
+Route::get('/ride/yellowjacket', 'ReportingController@yellowJacket');
+Route::get('/ride/summary/profile/{id}', 'ReportingController@summaryShow');
+Route::post('/ride/sumamry/last/ride/user/{id}','ReportingController@LastRideShow');
+Route::get('/user/{id}/ride/summary/map/{rid}','ReportingController@mapLatLong');
+}
+);
 
 Route::group(['middleware' => ['api']], function () {
     Route::post('auth/login', 'ApiController@login');
@@ -34,22 +47,4 @@ Route::group(['middleware' => ['api']], function () {
     });
 });
 
-Route::POST('/v1/profile/{id}/odometer', 'ReportingController@odometer');
 
-Route::POST('/v1/profile/{id}/ride/{rid}/sumamrydistance','ReportingController@summaryCreate');
-
-Route::get('/v1/profile/{id}', 'profileController@show');
-
-Route::POST('/v1/profile/{id}', 'profileController@update');
-
-Route::get('/v1/ride/summary/{id}', 'ReportingController@summaryShow');
-
-Route::post('/v1/ride/', 'ReportingController@store');
-
-Route::get('/v1/ride/yellowjacket', 'ReportingController@yellowJacket');
-
-Route::get('/v1/ride/summary/profile/{id}', 'ReportingController@summaryShow');
-
-Route::post('/v1/ride/sumamry/last/ride/user/{id}','ReportingController@LastRideShow');
-
-Route::get('/v1/user/{id}/ride/summary/map/{rid}','ReportingController@mapLatLong');
