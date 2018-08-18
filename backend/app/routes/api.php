@@ -17,9 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 	return $request->user();
 });
 
-Route::post('/mregister/', 'Auth\mRegisterController@CreateMUser');
 Route::group(['prefix' => 'v1'], function()
 {
+	Route::post('/mregister/', 'Auth\mRegisterController@CreateMUser');
 	Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
 	Route::post('authenticate', 'AuthenticateController@authenticate');
 Route::post('/newRiderID/{id}', 'ReportingController@newRiderID');
