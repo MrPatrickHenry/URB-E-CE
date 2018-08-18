@@ -18,12 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/mregister/', 'Auth\mRegisterController@CreateMUser');
-Route::post('/newRiderID/{id}', 'ReportingController@newRiderID');
 Route::group(['prefix' => 'v1'], function()
 {
 	Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
 	Route::post('authenticate', 'AuthenticateController@authenticate');
-
+Route::post('/newRiderID/{id}', 'ReportingController@newRiderID');
     // v1 routes
 //Profile
 	Route::POST('/profile/{id}/odometer', 'ReportingController@odometer');
