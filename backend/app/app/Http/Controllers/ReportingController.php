@@ -104,7 +104,7 @@ public function odometer(Request $request)
     // sum of distance 
     $odometer = DB::table('ridesummary')->where('userId', $uid)->sum('distance');
 
-    $urbeGreen = $urbe / $odometer;
+    $urbeGreen = $urbe * $odometer;
     $carGreen = $carCO2 * $odometer;
     // insert to odmoter
     $odmoterInsert = DB::table('users')->where('id', $uid)->update(['odmoeter' => $odometer,
