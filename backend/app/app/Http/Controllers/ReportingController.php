@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use Storage;
 use DateTime;
-use carbon;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ReportingController extends Controller
@@ -113,7 +113,6 @@ public function odometer(Request $request)
 
 }
 
-
 public function summaryCreate(Request $request)
 {
 //starting vars for workload
@@ -140,25 +139,41 @@ public function summaryCreate(Request $request)
 //Speed
     $avgSpeed = DB::table('RideData')->where([['USERID','=', $uid],['rideID','=', $rideID]])->avg('Speed');
 
+
     $MaxSpeedArray = DB::table('RideData')->select('Speed')->where([['USERID','=', $uid],['rideID','=', $rideID]])->orderBy('Speed', 'desc')->limit(1)->get();
+
 
     $MaxSpeed = $MaxSpeedArray[0]->Speed;
 
 //Time
     $TimestampDateandTime = DB::table('RideData')->select('timestamp')->where([['USERID','=', $uid],['rideID','=', $rideID]])->orderBy('timestamp', 'asc')->get();
+
     $timeSTmapsArray = json_decode($TimestampDateandTime);
-    $StartTime = array_first($timeSTmapsArray) ;
+
+    $StartTime = array_first($timeSTmapsArray);
+
     $EndTime = array_last($timeSTmapsArray) ;
 
     $stime = data_get($StartTime,'timestamp');
-    $etime = data_get($EndTime,'timestamp');
 
+    $etime = data_get($EndTime,'timestamp');
     $sdate = new DateTime($stime);
+
     $edate = new DateTime($etime);
-    $diff = date_diff($sdate,$edate);
-    $time = $diff->h;
+
+    $diff= date_diff($sdate,$edate);
+$diffh = $diff->h*3600;
+$dateminsec = $diffh+$diff->i*60+$diff->s;
+
+$time = round($dateminsec / 60);
 //distance
-    $distance = $avgSpeed * $time;
+
+if ($time != 0){
+$distance = $avgSpeed / $time;
+}
+else {
+    $distance = 0;
+}
 
 
 //carbonfootprint
