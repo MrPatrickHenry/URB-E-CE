@@ -144,7 +144,7 @@ public function UserDetails(Request $request){
     $altituteOverSpeed =DB::table('RideData')
     ->select('Altitude','speed' )->get();
 
-    $speedwithXTrend=DB::table('RideData')->select('speed','x')
+    $speedwithXTrend=DB::table('RideData')->select('speed','x');
 
     $TrendaltitutewithX =DB::table('RideData')
     ->select('Altitude','x' )->get();
