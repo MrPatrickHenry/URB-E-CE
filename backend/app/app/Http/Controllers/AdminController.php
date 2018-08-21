@@ -45,22 +45,22 @@ public function createUser()
 
 public function updateUser(Request $request)
 {
- $now = new DateTime();
- $uid = $request->id;
- $nameUpdated = $request->name;
- $active = $requst->active;
- $tier = $request->tier;
- $account_type = $request->accountType;
- $emailUpdated = $request->email;
- $profilepic = $request->file('profilepic')->store('profile_pictures');
- $gender = $request->gender;
- $height = $request->height;
- $weight = $request->weight;
- $publicShare = $request->publicShare;
- $metric = $request->metric;
- $devices = $request->devices;
+   $now = new DateTime();
+   $uid = $request->id;
+   $nameUpdated = $request->name;
+   $active = $requst->active;
+   $tier = $request->tier;
+   $account_type = $request->accountType;
+   $emailUpdated = $request->email;
+   $profilepic = $request->file('profilepic')->store('profile_pictures');
+   $gender = $request->gender;
+   $height = $request->height;
+   $weight = $request->weight;
+   $publicShare = $request->publicShare;
+   $metric = $request->metric;
+   $devices = $request->devices;
 
- $userUpdate = DB::table('users')->where('id', $uid)->update(
+   $userUpdate = DB::table('users')->where('id', $uid)->update(
     ['name' => $nameUpdated,
     'email' => $emailUpdated,
     'updated_at' => $now,
@@ -74,8 +74,8 @@ public function updateUser(Request $request)
     'publicShare' => $publicShare,
     'metric' => $metric,
     'devices' => $devices]);
- return response( json_encode('Success Updated',JSON_NUMERIC_CHECK), 200)
- ->header('Content-Type', 'application/json')->header(
+   return response( json_encode('Success Updated',JSON_NUMERIC_CHECK), 200)
+   ->header('Content-Type', 'application/json')->header(
     'Success', 200);
 }
 
@@ -136,11 +136,26 @@ public function UserDetails(Request $request){
     ->where('active', '=','active')
     ->orderBy('odmoeter', 'desc')->take(1)->get(); 
 
+    $MaxSpeed= DB::table('ridesummary')
+    ->select('maxSpeed')
+    ->orderBy('maxSpeed', 'desc')->take(1)->get(); 
 
+//bike Analyitcs
+    $altituteOverSpeed =DB::table('RideData')
+    ->select('Altitude','speed' )->get();
+
+    $speedwithXTrend=DB::table('RideData')->select('speed','x')
+
+    $TrendaltitutewithX =DB::table('RideData')
+    ->select('Altitude','x' )->get();
+
+    $centripetalForce=DB::table('RideData')->select('z','speed')
+
+    $wobblersSpeedwithY =DB::table('RideData')
+    ->select('speed','y' )->get();
 // removing password  
     $userdecoded = json_decode($topRider);
     $BlueRider =  data_fill($userdecoded, 'password', 10);
-
 
 
     $furtherstDistance= DB::table('ridesummary')->select('distance')
@@ -177,21 +192,32 @@ public function UserDetails(Request $request){
                 ],
                 "totalActiveUsers"=> $userCount,
                 "totalInActiveUsers"=> $userInActiveCount,
-                "eCO2"=>$sumsECarbon,
-                "cCO2"=>$sumsCCarbon,
                 "odmoeter"=>$sumsOdometer,
                 "devices"=>$devices,
                 "topRider"=> $topRider
             ],
             "usage"=> [
-               "day" => $cronos->format('l'),
-               "time" => $cronos->format('H:i:s'),
-               "avgSpeed" => $avgSpeed,
+             "day" => $cronos->format('l'),
+             "time" => $cronos->format('H:i:s'),
+             "avgSpeed" => $avgSpeed,
+             "eCO2"=>$sumsECarbon,
+             "cCO2"=>$sumsCCarbon,
                "longestRide" => $distanceLongest->distance //mile
-           ]
-       ]
-   ];
-   return response()->json($data);
+           ],
+           "Rideanalytics"=>[
+            "altOverSpeed"=> $altituteOverSpeed,
+            "speedwithX"=>$speedwithXTrend
+            "TrendAltwithX"=>$TrendaltitutewithX,
+            "speedwobble"=>$wobblersSpeedwithY,
+            "LeanersCorners"=>$centripetalForce,
+            "MaxSpeed"=>$MaxSpeed
+
+
+        ]
+
+    ]
+];
+return response()->json($data);
 
 }
 
@@ -258,6 +284,6 @@ public function update(Request $request, $id)
  */
 public function destroy($id)
 {
-    
+
 }
 }

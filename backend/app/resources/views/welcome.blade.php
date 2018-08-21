@@ -8,7 +8,7 @@
   <meta name="description" content="2020 Programetic xR Native Advertisment">
   <meta name="author" content="2020">
 <meta description="Share your creation, help people hang out with Beyonce or wear latest Nike , make people laugh or cry, start your own business with 2020, Don't loose out! Start monitizing your VR/AR Experience ">
-  <title>2020 programmatic Native Advertisement, Monitize your VR/AR Experience NOW!e</title>
+  <title>Urb-E Community App</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

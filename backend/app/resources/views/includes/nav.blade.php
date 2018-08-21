@@ -1,116 +1,31 @@
-   <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-    <div class="container">
-     <a href="/"> <img src="/images/logo/2020-logo-RGB-BW.png" class="logo" alt="2020 logo"></a>
-      
-      <ul class="navbar-nav ml-auto">
-
-        <!-- Dropdown Trigger -->
-
-
-        <!-- Authentication Links -->
-        @guest
-        <li><a class="nav-link" href="/login">{{ __('Login') }}</a></li>
-        <li><a class="nav-link" href="/register">{{ __('Register') }}</a></li>
-        @else
-     
-
-@php
-        $accountType = Auth::user()->account_type;
-
-        @endphp
-        <li class="nav-item dropdown" >
-          <span class="caret"></span><a id="navbarDropdown" class="nav-link dropdown-toggle" href="/profile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-<img src="{{ Auth::user()->user_profile_avatar }}" width="40px" style="border-radius: 100%" >{{ Auth::user()->name }} 
-          </a>
-
-
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown" stlye="display:none;z-index:30;" >
- 
-
-  <a class="dropdown-item" href="/profile">
-            <i class="tiny material-icons">account_box</i> 
-            {{ __('Account') }}
-          </a>
-
-
-  <a class="dropdown-item" href="/statements">
-            <i class="tiny material-icons">monetization_on</i> 
-            {{ __('Statement') }}
-          </a>
-
-            <a class="dropdown-item" href="/reporting">
-              <i class="tiny material-icons">assessment</i> 
-              {{ __('Reporting') }}
-            </a>
-
-
-            @if ($accountType === 'Brand')
-
-            <hr>
-            <a class="dropdown-item" href="/assets">
-              <i class="tiny material-icons">fingerprint</i> 
-              {{ __('Assets') }}
-            </a>
-
-       
-          </hr>
-          <a class="dropdown-item" href="/orders">
-            <i class="tiny material-icons">IO's</i> 
-            {{ __('Insertion Orders') }}
-
-          </a>
-          @endif
-
-          @if ($accountType === 'Publisher')
-            <a class="dropdown-item" href="/publisher/sdkgen/">
-            <i class="tiny material-icons">i</i> 
-            {{ __('>_ API Keys') }}
-          </a>
-          @endif
-<hr>
-
-          <a class="dropdown-item" href="/bug">
-            <i class="tiny material-icons">bug_report</i> 
-            {{ __('Bug') }}
-          </a>
-
-          {{--  <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">  <i class="tiny material-icons">exit_to_app</i> 
-            {{ __('Logout') }}
-          </a>
-
-
-
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-          </form>
- --}}
-
-       <a class="dropdown-item" href="/help">
-            <i class="tiny material-icons">help</i> 
-            {{ __('Help') }}
-          </a>
-{{--                               <a data-toggle="modal" href="#UploadAssetDetailsModal">Assets</a>
- --}}
-                              <a class="dropdown-item" href="/assets">
-            <i class="tiny material-icons">fingerprint</i> 
-            {{ __('Asset Upload') }}
-
-          </a>
-
-<a class="dropdown-item" href="https://20-twenty.online/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-
-<form id="logout-form" action="https://20-twenty.online/logout" method="POST" style="display: none;">{{ csrf_field() }}</form>
-
-
-
-        </div>
-
-        
-      </li>
-
-      @endguest
-    </ul>
-  </div>
-</nav>
-
-
+<div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <header class="demo-drawer-header">
+          <img src="images/user.jpg" class="demo-avatar">
+          <div class="demo-avatar-dropdown">
+            <span>hello@example.com</span>
+            <div class="mdl-layout-spacer"></div>
+            <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+              <i class="material-icons" role="presentation">arrow_drop_down</i>
+              <span class="visuallyhidden">Accounts</span>
+            </button>
+            <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+              <li class="mdl-menu__item">hello@example.com</li>
+              <li class="mdl-menu__item">info@example.com</li>
+              <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
+            </ul>
+          </div>
+        </header>
+        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Home</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Inbox</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Trash</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Spam</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Forums</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Updates</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promos</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Purchases</a>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Social</a>
+          <div class="mdl-layout-spacer"></div>
+          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+        </nav>
+      </div>

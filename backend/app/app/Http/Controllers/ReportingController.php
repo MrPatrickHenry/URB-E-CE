@@ -70,7 +70,7 @@ public function store(Request $request)
     ]);
     // echo json_encode($rideInsert,JSON_NUMERIC_CHECK); 
     return response( json_encode('Success Added',JSON_NUMERIC_CHECK), 200)
-       ->header('Content-Type', 'application/json')->header(
+    ->header('Content-Type', 'application/json')->header(
         'Success', 200);
 }
 
@@ -133,42 +133,57 @@ public function summaryCreate(Request $request)
     $num = count($lats);
 
     if ($num == 0){
-          return response('No Record Created', 200)
-                  ->header('Content-Type', 'json');
-    }
+      return response('No Ride ID yet', 200)
+      ->header('Content-Type', 'json');
+  }
 
+  $deal_lat=$lats[0]->Latitude;
+  $deal_long=$lats[0]->Longitude;
+
+  $geocode=file_get_contents('http://maps.googleapis.com/maps/api/geocode/json?latlng='.$deal_lat.','.$deal_long.'&sensor=false');
+  $output = json_decode($geocode);
+
+  $neighbourhood = $output->results[0]->address_components[1]->long_name;
+  if ($neighbourhood == 0){
+      return response('No Record Created', 200)
+      ->header('Content-Type', 'json');
+  }
+  $city = $output->results[0]->address_components[4]->long_name;
+
+
+  $Ridelocation = "$neighbourhood, $city";
 //Speed
-    $avgSpeed = DB::table('RideData')->where([['USERID','=', $uid],['rideID','=', $rideID]])->avg('Speed');
+  $avgSpeed = DB::table('RideData')->where([['USERID','=', $uid],['rideID','=', $rideID]])->avg('Speed');
 
 
-    $MaxSpeedArray = DB::table('RideData')->select('Speed')->where([['USERID','=', $uid],['rideID','=', $rideID]])->orderBy('Speed', 'desc')->limit(1)->get();
+  $MaxSpeedArray = DB::table('RideData')->select('Speed')->where([['USERID','=', $uid],['rideID','=', $rideID]])->orderBy('Speed', 'desc')->limit(1)->get();
 
 
-    $MaxSpeed = $MaxSpeedArray[0]->Speed;
+  $MaxSpeed = $MaxSpeedArray[0]->Speed;
 
 //Time
-    $TimestampDateandTime = DB::table('RideData')->select('timestamp')->where([['USERID','=', $uid],['rideID','=', $rideID]])->orderBy('timestamp', 'asc')->get();
+  $TimestampDateandTime = DB::table('RideData')->select('timestamp')->where([['USERID','=', $uid],['rideID','=', $rideID]])->orderBy('timestamp', 'asc')->get();
 
-    $timeSTmapsArray = json_decode($TimestampDateandTime);
+  $timeSTmapsArray = json_decode($TimestampDateandTime);
 
-    $StartTime = array_first($timeSTmapsArray);
+  $StartTime = array_first($timeSTmapsArray);
 
-    $EndTime = array_last($timeSTmapsArray) ;
+  $EndTime = array_last($timeSTmapsArray) ;
 
-    $stime = data_get($StartTime,'timestamp');
+  $stime = data_get($StartTime,'timestamp');
 
-    $etime = data_get($EndTime,'timestamp');
-    $sdate = new DateTime($stime);
-    $edate = new DateTime($etime);
-    $diff= date_diff($sdate,$edate);
-$diffh = $diff->h*3600;
-$dateminsec = $diffh+$diff->i*60+$diff->s;
+  $etime = data_get($EndTime,'timestamp');
+  $sdate = new DateTime($stime);
+  $edate = new DateTime($etime);
+  $diff= date_diff($sdate,$edate);
+  $diffh = $diff->h*3600;
+  $dateminsec = $diffh+$diff->i*60+$diff->s;
 
-$time = round($dateminsec / 60);
+  $time = round($dateminsec / 60);
 //distance
 
-if ($time != 0){
-$distance = $avgSpeed / $time;
+  if ($time != 0){
+    $distance = $avgSpeed / $time;
 }
 else {
     $distance = 0;
@@ -177,8 +192,14 @@ else {
 
 //carbonfootprint
 
-    $urbeGreen = $urbe * $distance;
-    $carGreen = $carCO2 * $distance;
+$urbeGreen = $urbe * $distance;
+$carGreen = $carCO2 * $distance;
+
+
+
+
+
+
 
 
     // google maps distanc
@@ -197,19 +218,20 @@ else {
     // }
 
 
-    $rideSummaryInsert = DB::table('ridesummary')->insert([
-        'distance' => $distance,
-        'rideID' => $rideID,
-        'avgSpeed' => $avgSpeed,
-        'created_at'=> $now,
-        'maxSpeed' => $MaxSpeed,
-        'userID' => $uid,
-        'eCO2' => $urbeGreen,
-        'cCO2' => $carGreen
-    ]);
-    echo json_encode($rideSummaryInsert,JSON_NUMERIC_CHECK); 
+$rideSummaryInsert = DB::table('ridesummary')->insert([
+    'distance' => $distance,
+    'rideID' => $rideID,
+    'city'=> $Ridelocation,
+    'avgSpeed' => $avgSpeed,
+    'created_at'=> $now,
+    'maxSpeed' => $MaxSpeed,
+    'userID' => $uid,
+    'eCO2' => $urbeGreen,
+    'cCO2' => $carGreen
+]);
+echo json_encode($rideSummaryInsert,JSON_NUMERIC_CHECK); 
 
-    return $this->odometer($request);
+return $this->odometer($request);
 
 }
 public function newRiderID(Request $request){
