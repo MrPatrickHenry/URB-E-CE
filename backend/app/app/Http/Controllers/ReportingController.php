@@ -159,9 +159,7 @@ public function summaryCreate(Request $request)
 
     $etime = data_get($EndTime,'timestamp');
     $sdate = new DateTime($stime);
-
     $edate = new DateTime($etime);
-
     $diff= date_diff($sdate,$edate);
 $diffh = $diff->h*3600;
 $dateminsec = $diffh+$diff->i*60+$diff->s;

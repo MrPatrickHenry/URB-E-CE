@@ -80,10 +80,6 @@ class profileController extends Controller
      */
     public function update(Request $request)
     {
-
-
-      // dd($request); 
-
        $now = new DateTime();
        $uid = $request->id;
        $nameUpdated = $request->name;
@@ -95,9 +91,6 @@ class profileController extends Controller
        $publicShare = $request->publicShare;
        $metric = $request->metric;
        $devices = $request->devices;
-
-
-
 
        $userUpdate = DB::table('users')->where('id', $uid)->update(
         ['name' => $nameUpdated,
