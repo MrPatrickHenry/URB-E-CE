@@ -111,8 +111,8 @@ public function UserDetails(Request $request){
 
     $userInActiveCount = DB::table('users')->where('active','inactive')->count();
 
-    $men = DB::table('users')->where('gender','male')->count();
-    $woman = DB::table('users')->where('gender','woman')->count();
+    $men = DB::table('users')->where('gender','Male')->count();
+    $woman = DB::table('users')->where('gender','Female')->count();
     $genderless = DB::table('users')->where('gender','other')->count();
 
 
