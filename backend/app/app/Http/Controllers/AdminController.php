@@ -206,7 +206,7 @@ public function UserDetails(Request $request){
            ],
            "Rideanalytics"=>[
             "altOverSpeed"=> $altituteOverSpeed,
-            "speedwithX"=>$speedwithXTrend
+            "speedwithX"=>$speedwithXTrend,
             "TrendAltwithX"=>$TrendaltitutewithX,
             "speedwobble"=>$wobblersSpeedwithY,
             "LeanersCorners"=>$centripetalForce,
