@@ -149,7 +149,7 @@ public function UserDetails(Request $request){
     $TrendaltitutewithX =DB::table('RideData')
     ->select('Altitude','x' )->get();
 
-    $centripetalForce=DB::table('RideData')->select('z','speed')
+    $centripetalForce=DB::table('RideData')->select('z','speed');
 
     $wobblersSpeedwithY =DB::table('RideData')
     ->select('speed','y' )->get();
