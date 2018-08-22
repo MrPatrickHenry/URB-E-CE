@@ -34,8 +34,10 @@
     <link href="/css/jquery-jvectormap.css" type="text/css" rel="stylesheet">
     <link href="/css/flag-icon.min.css" type="text/css" rel="stylesheet">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
   </head>
-  <body id="layouts-horizontal">
+  <body id="layouts-horizontal" ng-app="myApp" ng-controller="myCtrl">
     <!-- Start Page Loading -->
     <div id="loader-wrapper">
       <div id="loader"></div>
@@ -95,7 +97,7 @@
               </li>
             </ul> --}}
             <!-- translation-button -->
-            <ul id="translation-dropdown" class="dropdown-content">
+           {{--  <ul id="translation-dropdown" class="dropdown-content">
               <li>
                 <a href="#!" class="grey-text text-darken-1">
                   <i class="flag-icon flag-icon-gb"></i> English</a>
@@ -170,7 +172,7 @@
                 <a href="#" class="grey-text text-darken-1">
                   <i class="material-icons">keyboard_tab</i> Logout</a>
               </li>
-            </ul>
+            </ul> --}}
           </div>
         </nav>
         <!-- HORIZONTL NAV START-->
@@ -231,8 +233,8 @@
                   <div class="card">
                     <div class="card-content teal accent-4 white-text">
                       <p class="card-stats-title">
-                        <i class="material-icons">trending_up</i> Today Profit</p>
-                      <h4 class="card-stats-number">$806.52</h4>
+                        <i class="material-icons">trending_up</i> Today Miles</p>
+                      <h4 class="card-stats-number">@{{myWelcome.distance}}</h4>
                       <p class="card-stats-compare">
                         <i class="material-icons">keyboard_arrow_up</i> 80%
                         <span class="teal-text text-lighten-5">from yesterday</span>
@@ -1216,6 +1218,20 @@
     <!-- ================================================
     Scripts
     ================================================ -->
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $http.get("/api/v1/admin/milesToday")
+  .then(function(response) {
+      $scope.myWelcome = response.data;
+  });
+});
+</script>
+
+
+
+
     <!-- jQuery Library -->
 <script
         src="https://code.jquery.com/jquery-3.3.1.js"

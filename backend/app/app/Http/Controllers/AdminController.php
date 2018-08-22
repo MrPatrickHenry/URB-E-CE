@@ -242,6 +242,22 @@ public function yellowJacket(Request $request)
 }
 
 
+public function milesToday()
+{
+       $sumsOdometer = DB::table('ridesummary')
+    ->where('id','>', 1)
+    ->sum('distance');
+
+    $data = [
+        "status"=> "OK",
+        "data"=> [ 
+                "distance"=> $sumsOdometer,
+                ]
+            ];
+return response()->json($data);
+
+}
+
 /**
  * Display the specified resource.
  *

@@ -121,11 +121,11 @@
 
     // Plugin initialization
 
-    $('select').material_select();
-    // Set checkbox on forms.html to indeterminate
-    var indeterminateCheckbox = document.getElementById('indeterminate-checkbox');
-    if (indeterminateCheckbox !== null)
-      indeterminateCheckbox.indeterminate = true;
+    // $('select').material_select();
+    // // Set checkbox on forms.html to indeterminate
+    // var indeterminateCheckbox = document.getElementById('indeterminate-checkbox');
+    // if (indeterminateCheckbox !== null)
+    //   indeterminateCheckbox.indeterminate = true;
 
     // Materialize Slider
     $('.slider').slider({
@@ -170,44 +170,44 @@
       delay: 50
     });
 
-    //Main Left Sidebar Menu
-    $('.sidebar-collapse').sideNav({
-      edge: 'left', // Choose the horizontal origin
-    });
+    // //Main Left Sidebar Menu
+    // $('.sidebar-collapse').sideNav({
+    //   edge: 'left', // Choose the horizontal origin
+    // });
 
-    // Overlay Menu (Full screen menu)
-    $('.menu-sidebar-collapse').sideNav({
-      menuWidth: 240,
-      edge: 'left', // Choose the horizontal origin
-      //closeOnClick:true, // Set if default menu open is true
-      menuOut: false // Set if default menu open is true
-    });
+    // // Overlay Menu (Full screen menu)
+    // $('.menu-sidebar-collapse').sideNav({
+    //   menuWidth: 240,
+    //   edge: 'left', // Choose the horizontal origin
+    //   //closeOnClick:true, // Set if default menu open is true
+    //   menuOut: false // Set if default menu open is true
+    // });
 
-    //Main Left Sidebar Chat
-    $('.chat-collapse').sideNav({
-      menuWidth: 300,
-      edge: 'right',
-    });
+    // //Main Left Sidebar Chat
+    // $('.chat-collapse').sideNav({
+    //   menuWidth: 300,
+    //   edge: 'right',
+    // });
 
-    // Pikadate datepicker
-    $('.datepicker').pickadate({
-      selectMonths: true, // Creates a dropdown to control month
-      selectYears: 15 // Creates a dropdown of 15 years to control year
-    });
+    // // Pikadate datepicker
+    // $('.datepicker').pickadate({
+    //   selectMonths: true, // Creates a dropdown to control month
+    //   selectYears: 15 // Creates a dropdown of 15 years to control year
+    // });
 
-    // Perfect Scrollbar
-    $('select').not('.disabled').material_select();
-    var leftnav = $(".page-topbar").height();
-    var leftnavHeight = window.innerHeight - leftnav;
-    if (!$('#slide-out.leftside-navigation').hasClass('native-scroll')) {
-      $('.leftside-navigation').perfectScrollbar({
-        suppressScrollX: true
-      });
-    }
-    var righttnav = $("#chat-out").height();
-    $('.rightside-navigation').perfectScrollbar({
-      suppressScrollX: true
-    });
+    // // Perfect Scrollbar
+    // $('select').not('.disabled').material_select();
+    // var leftnav = $(".page-topbar").height();
+    // var leftnavHeight = window.innerHeight - leftnav;
+    // if (!$('#slide-out.leftside-navigation').hasClass('native-scroll')) {
+    //   $('.leftside-navigation').perfectScrollbar({
+    //     suppressScrollX: true
+    //   });
+    // }
+    // var righttnav = $("#chat-out").height();
+    // $('.rightside-navigation').perfectScrollbar({
+    //   suppressScrollX: true
+    // });
 
     // Fullscreen
     function toggleFullScreen() {
