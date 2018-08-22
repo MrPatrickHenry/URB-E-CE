@@ -234,7 +234,7 @@
                     <div class="card-content teal accent-4 white-text">
                       <p class="card-stats-title">
                         <i class="material-icons">trending_up</i> Today Miles</p>
-                      <h4 class="card-stats-number">@{{myWelcome.distance}}</h4>
+                      <h4 class="card-stats-number">@{{dailymph[0].distance}}</h4>
                       <p class="card-stats-compare">
                         <i class="material-icons">keyboard_arrow_up</i> 80%
                         <span class="teal-text text-lighten-5">from yesterday</span>
@@ -1224,7 +1224,7 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
   $http.get("/api/v1/admin/milesToday")
   .then(function(response) {
-      $scope.myWelcome = response.data;
+      $scope.dailymph = response.data;
   });
 });
 </script>

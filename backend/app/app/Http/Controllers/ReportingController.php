@@ -139,15 +139,19 @@ public function summaryCreate(Request $request)
 
   $deal_lat=$lats[0]->Latitude;
   $deal_long=$lats[0]->Longitude;
-
   $geocode=file_get_contents('http://maps.googleapis.com/maps/api/geocode/json?latlng='.$deal_lat.','.$deal_long.'&sensor=false');
   $output = json_decode($geocode);
 
+
+
   $neighbourhood = $output->results[0]->address_components[1]->long_name;
-  if ($neighbourhood == 0){
-      return response('No Record Created', 200)
-      ->header('Content-Type', 'json');
-  }
+
+  //   dd($neighbourhood);
+
+  // if ($neighbourhood == 0){
+  //     return response('No Record Created', 200)
+  //     ->header('Content-Type', 'json');
+  // }
   $city = $output->results[0]->address_components[4]->long_name;
 
 
