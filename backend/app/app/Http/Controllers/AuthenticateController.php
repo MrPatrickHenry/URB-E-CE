@@ -28,21 +28,39 @@ public function index()
     // Retrieve all the users in the database and return them
     // $users = User::all();
     $users = User::where('id', '=', Auth::id())->get();
-    return $users;
-}  
+
+ $data = [
+        "status"=> "200",
+        "data"=> [ $users[0]->id]
+      ];
+
+
+return response()->json($data);
+}
 
     public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');
 
+ $credentialsError = [
+        "status"=> "401",
+        "message"=>"invalid credentials" ];
+
+ $tokenError = [
+        "status"=> "500",
+        "message"=>"invalid credentials" ];
+
         try {
             // verify the credentials and create a token for the user
-            if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'invalid_credentials'], 401);
+           if (! $token = JWTAuth::attempt($credentials)) {
+//error handling
+
+return response()->json($credentialsError);
             }
         } catch (JWTException $e) {
             // something went wrong
-            return response()->json(['error' => 'could_not_create_token'], 500);
+return response()->json($tokenError);
+
         }
 
         // if no errors are encountered we can return a JWT
