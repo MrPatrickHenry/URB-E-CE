@@ -274,7 +274,14 @@ public function LastRideShow(Request $request){
 
     $lastRiderSummary = DB::table('ridesummary')->where('userID','=',$uid)->orderby('id','desc')->limit(1)->get();
 
-    echo json_encode($lastRiderSummary,JSON_NUMERIC_CHECK);  
+
+$lastRideData = [
+    "status"=> "200",
+    "data"=> [ "summary"=> $lastRiderSummary]
+  ];
+
+    return response()->json($lastRideData);
+
 }
 
 
