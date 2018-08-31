@@ -1,0 +1,48 @@
+<main ng-controller="ProfileController">
+  <div class="card hovercard">
+    <div class="card-background">
+      <img class="card-bkimg"  src="https://loremflickr.com/320/240?lock=212" />
+      <!-- http://lorempixel.com/850/280/people/9/ -->
+    </div>
+    <div class="useravatar">
+      <img alt="{{profileuser[0].user_profile_avatar}}" src="http://urbe.patrickhenry.us/storage/{{profileuser[0].user_profile_avatar}}"></img>
+    </div>
+    <br>
+    <div class="card-info">
+
+        <span class="card-title">{{profileuser[0].name}}</span>
+
+    </div>
+  </div>
+<br>
+  <div class="demo-card-square mdl-card" style="width:100%; margin:0 auto;">
+
+    <div class="mdl-card__supporting-text" style="margin: 0 auto; width: 45%;">
+        <label><span class="profilelabel">E-mail</span></label><br>
+
+      <label><span class="profiletext">{{profileuser[0].email}}</span></label><br>
+        <label><span class="profilelabel">Device</span></label><br>
+        <label ><span class="profiletext">{{profileuser[0].devices}}</span></label><br>
+        <label><span class="profilelabel">Gender</span></label><br>
+        <label><span class="profiletext">{{profileuser[0].gender}}</span><label><br>
+          <label><span class="profilelabel">Height</span></label><br>
+          <label><span class="profiletext">{{profileuser[0].height}}</span></label><br>
+
+          
+          <label><span class="profilelabel">Weight</span></label><br>
+          <label><span class="profiletext">{{profileuser[0].weight}}</span></label>
+
+
+       
+          <!-- Metrick switch -->
+          <input type="checkbox" attr.checked="{{profileuser[0].metric}}"/>
+<!--   <label for="metric" class="checkbox-label" data-off="IMPERIAL" data-on="METRIC"></label>
+-->
+<p>
+        <a class="waves-effect waves-teal btn-flat" href="#!settings"><i class="material-icons">create</i>Edit Profile</a>
+</p>
+
+
+</div>
+</div>
+</main>

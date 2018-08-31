@@ -1,0 +1,29 @@
+<main class="mdl-layout__content" style="margin:0 auto; float:left; width:100%;" ng-controller="riderSummaryController">
+  <div class="page-content">
+   <div class="mdl-grid">
+    <div>
+      <table class="centered striped" width="90%">
+        <tr>
+          <th class="mdl-data-table__cell--non-numeric">City</th>
+         <th class="mdl-data-table__cell--non-numeric">Avg Speed</th>
+          <th class="mdl-data-table__cell--non-numeric">Max Speed</th>
+          <th class="mdl-data-table__cell--non-numeric">Distance</th>
+          <th class="mdl-data-table__cell--non-numeric">E-Co2</th>
+          <th class="mdl-data-table__cell--non-numeric">Co2</th>
+        </tr>
+        <tr ng-repeat="x in ridersummary">
+        <td>{{ x.city }}</td>
+          <td>{{ x.avgSpeed }}</td>
+          <td>{{ x.maxSpeed }}</td>
+          <td>{{ x.distance }}</td>
+          <td>{{ x.eCO2 }}</td>
+          <td>{{ x.cCO2 }}</td>
+        </tr>
+      </table>
+
+    </div>
+
+  </div>
+</div>
+</main>
+

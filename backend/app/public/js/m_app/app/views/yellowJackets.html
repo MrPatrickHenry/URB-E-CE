@@ -1,0 +1,32 @@
+<main class="mdl-layout__content" style="margin:0 auto; float:left; width:100%;" ng-controller="YellowController">
+  <div class="page-content">
+   <div class="mdl-grid">
+    <div>
+      <h5>
+          URB-E <span style="color:#00aeef;">'Bluejackets'</span> ride hard and help save the environment
+      </h5>
+
+      <table class="striped highlight" width="90%">
+        <tr>          
+         <th class="centered"></th>
+
+          <th class="centered">Name</th>
+          <th class="centered">Distance (Miles)</th>
+          <th class="centered">E-Co2</th>
+        </tr>
+        <tr ng-repeat="x in yellowjackets">
+      <td>    <div class="useravatar">
+      <img alt="{{profileuser[0].user_profile_avatar}}" src="http://urbe.patrickhenry.us/storage/{{profileuser[0].user_profile_avatar}}"></img>
+    </div></td>
+
+          <td>{{ x.name }}</td>
+          <td>{{ x.odmoeter }}</td>
+          <td>{{ x.eCO2 }}</td>
+        </tr>
+      </table>   
+
+    </div>
+
+  </div>
+</div>
+</main>

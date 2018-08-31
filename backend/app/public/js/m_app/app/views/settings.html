@@ -1,0 +1,142 @@
+<main class="mdl-layout__content" style="margin:0 auto; margin-left:20%; width:auto; margin-top:10%;">
+    <div class="col s12" style="margin: 0 auto; width: auto;">
+
+        <div class="row">
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab col s3">
+                <a class="waves-effect waves-teal btn-flat" href="#!gdpr">GDPR</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+ <ul class="collapsible">
+    <li>
+      <div class="collapsible-header">
+          <i class="material-icons">face</i>
+          Details
+      </div>
+      <div class="collapsible-body">
+        <div class="email">
+        <input type="text" id="name" name="name" placeholder="Name"/>
+    </div>
+    <p>
+
+      <div class="email">
+        <label class="profilelabel" for="nickname">Urb-E Name</label>
+        <input id="nickname" type="text" name="nickname" placeholder="Nickname"/>
+    </div>
+
+    <p>
+        <div class='file-input'>
+          <input type='file' id="profilepic" name="profilepfic">
+          <span class='button'>Choose</span>
+          <span class='label' data-js-label>No file selected</label>
+          </div>
+
+          <p>
+
+
+            <div class="email">
+                <input type="email" id="email" name="email" placeholder="E-mail">
+                <svg viewBox="0 0 16 16">
+                    <path d="M10.8000002,10.8000002 C9.85000038,11.6500006 9.18349609,12 8,12 C5.80000019,12 4,10.1999998 4,8 C4,5.80000019 5.80000019,4 8,4 C10.1999998,4 12,6 12,8 C12,9.35332031 12.75,9.5 13.5,9.5 C14.25,9.5 15,8.60000038 15,8 C15,4 12,1 8,1 C4,1 1,4 1,8 C1,12 4,15 8,15 C12,15 15,12 15,8"></path>
+                    <polyline points="5 8.375 7.59090909 11 14.5 4" transform='translate(0 -0.5)'></polyline>
+                </svg>
+            </div>
+            <div class="email">
+                <label class="profilelabel" for="gender">Gender</label>
+                <select id="gender" name="gender">
+                    <option value="" disabled selected>Choose a gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="other">Other</option>
+                    <option value="private">Not say</option>
+                </select> 
+            </div>
+            <p> 
+              <label for="metric">
+                <input type="checkbox" id="metric" type="checkbox" name="metric" />
+                <span>Do you use metric?</span>
+            </label>
+        </p>
+        <p> 
+            <span> Join in with community share your;<br>
+            ride distance, eCO2 vs CO2, Urb-E Name</span></p>
+
+  </div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">battery_full</i>Battery Settings</div>
+      <div class="collapsible-body">
+<span> To help with battery levels</span>
+
+<div class="email">
+            <label class="profilelabel" for="weight">Weight in kg</label>
+            <input id="weight" type="number" name="weight"  pattern="-?[0-9]*(\.[0-9]+)?"/>
+            <span class="mdl-textfield__error">Input is not a number!</span>
+        </div>
+        <div class="email">
+            <label class="profilelabel" for="height">Height in cm</label>
+            <input id="height" type="number" name="height" pattern="-?[0-9]*(\.[0-9]+)?"/>
+            <span class="mdl-textfield__error">Input is not a number!</span>
+        </div>
+        <div class="email">
+            <label class="profilelabel" for="device">Which E-Hog you ride!</label>
+            <select id="device" name="device" width="100px">
+                <option value="">Device</option>
+                <option value="Urb-E Sport">Urb-E Sport</option>
+                <option value="Urb-E Sport GT">Urb-E Sport GT</option>
+                <option value="Urb-E Pro">Urb-E Pro</option>
+                <option value="Urb-E Pro GT">Urb-E Pro GT</option>
+            </select> 
+        </div>
+
+    </div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="material-icons">group</i>Community</div>
+      <div class="collapsible-body">
+
+
+<p> 
+              <label for="publicShare">
+                <input type="checkbox" id="publicShare" type="checkbox" name="publicShare" />
+                <span>Join in the fun?</span>
+            </label>
+        </p>
+
+    </div>
+    </li>
+    <button id="submit" class="waves-effect waves-light btn" onclick="settingsupdate()">Update</button>
+
+
+    <li>
+      <div class="collapsible-header"><i class="material-icons">lock</i>Password</div>
+      <div class="collapsible-body">
+<p>
+            <span>Reset your password here</span>
+            <div class="email">
+                <label class="profilelabel" for="password">Password</label>
+                <input id="password" type="password" name="password"/>
+            </div>
+            <div class="email">
+
+                <label class="profilelabel" for="password2">Confirm Password</label>
+                <input id="password" type="password" name="password2"/>
+            </div>
+            <p>
+                <button class="waves-effect waves-light btn" onclick="updatePassword()">Reset Password</button></p>
+    </div>
+    </li>
+  </ul>
+   </p>
+ </main>
+
+<script>
+    $(document).ready(function(){
+                      $('.collapsible').collapsible();
+                      });
+                      
+    </script>

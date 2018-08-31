@@ -1,0 +1,28 @@
+
+ <main class="mdl-layout__content" style="margin:0 auto; float:left; width:100%;">
+
+<div class="row" id="speedometer">
+    <div class="col s12 blur">
+        <!--Speedomoter-->
+        <div id="geolocation">
+            <h2 id="marco" class="pulsate-fwd">Marco ...</h2>
+        </div>
+    </div>
+</div>
+        <!-- end of speedometer -->
+
+    <div id="controls">
+        <button onclick="startandSaveRide(); getWeather();" class="waves-effect waves-light btn pulse scale-out" id="startRide">
+        Start</button>
+
+        <button onclick="stoprecording()" class="waves-effect waves-light btn scale-in" id="stopRide" style="display:none;"> Stop</button>
+    </div>
+</main>
+
+<script type="text/javascript">
+    
+     onReadyspeed();
+    getWeather(Latitude, Longitude);
+                   
+    </script>
+
