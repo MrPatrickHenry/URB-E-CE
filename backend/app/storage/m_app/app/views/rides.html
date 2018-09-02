@@ -1,0 +1,243 @@
+<!--<script>-->
+<!--    var apiKey = 'AIzaSyDZen7V66VhtOrckP1ecW2JgxtFQIFqNcg';-->
+<!--    var path = [-->
+<!--                {"lat":40.74906618,"lng":-73.94363556},-->
+<!--                {"lat":40.74950952,"lng":-73.93752423},-->
+<!--                {"lat":40.7531322,"lng":-73.94569084},-->
+<!--                {"lat":40.75465708,"lng":-73.94917971},-->
+<!--                {"lat":40.7555514,"lng":-73.95289468},-->
+<!--                {"lat":40.75727066,"lng":-73.95778862},-->
+<!--                {"lat":40.76072012,"lng":-73.96272758},-->
+<!--                {"lat":40.75931936,"lng":-73.96526974},-->
+<!--                {"lat":40.75097009,"lng":-73.97136169},-->
+<!--                {"lat":40.74842155,"lng":-73.96903087},-->
+<!--                {"lat":40.74808206,"lng":-73.97013724},-->
+<!--                {"lat":40.74749813,"lng":-74.00772672},-->
+<!--                {"lat":40.75170797,"lng":-74.00782471},-->
+<!--                {"lat":40.7595399,"lng":-74.00302883},-->
+<!--                {"lat":40.7692224,"lng":-73.99487608},-->
+<!--                {"lat":40.76505143,"lng":-73.97891422},-->
+<!--                {"lat":40.76417138,"lng":-73.9768366},-->
+<!--                {"lat":40.76304813,"lng":-73.97414327},-->
+<!--                {"lat":40.7617957,"lng":-73.97119814},-->
+<!--                {"lat":40.76112384,"lng":-73.96960876},-->
+<!--                {"lat":40.75989013,"lng":-73.96667654},-->
+<!--                {"lat":40.75092014,"lng":-73.94547823},-->
+<!--                {"lat":40.74937837,"lng":-73.94314432}-->
+<!--                ];-->
+<!--                var map;-->
+<!--                var snappedCoordinates = [];-->
+<!--                var extendedPath = [];-->
+<!--                var startMarker;-->
+<!--                var endMarker;-->
+<!--<!--                var startIcon = "https://mts.googleapis.com/maps/vt/icon/name=icons/spotlight/spotlight-waypoint-a.png&text=A&psize=16&font=fonts/Roboto-Regular.ttf&color=ff333333&ax=44&ay=48&scale=1";-->-->
+<!--<!--                var endIcon = "https://mts.googleapis.com/maps/vt/icon/name=icons/spotlight/spotlight-waypoint-b.png&text=B&psize=16&font=fonts/Roboto-Regular.ttf&color=ff333333&ax=44&ay=48&scale=1";-->-->
+<!--                var infowindow;-->
+<!--                function initialize() {-->
+<!--                    var mapOptions = {-->
+<!--                        center: {lat: path[0].lat, lng: path[0].lng},-->
+<!--                        zoom: 14,-->
+<!--                        mapTypeId: google.maps.MapTypeId.ROADMAP,-->
+<!--                        styles: [-->
+<!--                                 {elementType: 'geometry', stylers: [{color: '#242f3e'}]},-->
+<!--                                 {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},-->
+<!--                                 {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},-->
+<!--                                 {-->
+<!--                                 featureType: 'administrative.locality',-->
+<!--                                 elementType: 'labels.text.fill',-->
+<!--                                 stylers: [{color: '#d59563'}]-->
+<!--                                 },-->
+<!--                                 {-->
+<!--                                 featureType: 'poi',-->
+<!--                                 elementType: 'labels.text.fill',-->
+<!--                                 stylers: [{color: '#d59563'}]-->
+<!--                                 },-->
+<!--                                 {-->
+<!--                                 featureType: 'poi.park',-->
+<!--                                 elementType: 'geometry',-->
+<!--                                 stylers: [{color: '#263c3f'}]-->
+<!--                                 },-->
+<!--                                 {-->
+<!--                                 featureType: 'poi.park',-->
+<!--                                 elementType: 'labels.text.fill',-->
+<!--                                 stylers: [{color: '#6b9a76'}]-->
+<!--                                 },-->
+<!--                                 {-->
+<!--                                 featureType: 'road',-->
+<!--                                 elementType: 'geometry',-->
+<!--                                 stylers: [{color: '#38414e'}]-->
+<!--                                 },-->
+<!--                                 {-->
+<!--                                 featureType: 'road',-->
+<!--                                 elementType: 'geometry.stroke',-->
+<!--                                 stylers: [{color: '#212a37'}]-->
+<!--                                 },-->
+<!--                                 {-->
+<!--                                 featureType: 'road',-->
+<!--                                 elementType: 'labels.text.fill',-->
+<!--                                 stylers: [{color: '#9ca5b3'}]-->
+<!--                                 },-->
+<!--                                 {-->
+<!--                                 featureType: 'road.highway',-->
+<!--                                 elementType: 'geometry',-->
+<!--                                 stylers: [{color: '#746855'}]-->
+<!--                                 },-->
+<!--                                 {-->
+<!--                                 featureType: 'road.highway',-->
+<!--                                 elementType: 'geometry.stroke',-->
+<!--                                 stylers: [{color: '#1f2835'}]-->
+<!--                                 },-->
+<!--                                 {-->
+<!--                                 featureType: 'road.highway',-->
+<!--                                 elementType: 'labels.text.fill',-->
+<!--                                 stylers: [{color: '#f3d19c'}]-->
+<!--                                 },-->
+<!--                                 {-->
+<!--                                 featureType: 'transit',-->
+<!--                                 elementType: 'geometry',-->
+<!--                                 stylers: [{color: '#2f3948'}]-->
+<!--                                 },-->
+<!--                                 {-->
+<!--                                 featureType: 'transit.station',-->
+<!--                                 elementType: 'labels.text.fill',-->
+<!--                                 stylers: [{color: '#d59563'}]-->
+<!--                                 },-->
+<!--                                 {-->
+<!--                                 featureType: 'water',-->
+<!--                                 elementType: 'geometry',-->
+<!--                                 stylers: [{color: '#17263c'}]-->
+<!--                                 },-->
+<!--                                 {-->
+<!--                                 featureType: 'water',-->
+<!--                                 elementType: 'labels.text.fill',-->
+<!--                                 stylers: [{color: '#515c6d'}]-->
+<!--                                 },-->
+<!--                                 {-->
+<!--                                 featureType: 'water',-->
+<!--                                 elementType: 'labels.text.stroke',-->
+<!--                                 stylers: [{color: '#17263c'}]-->
+<!--                                 }-->
+<!--                                 ]-->
+<!--                    };-->
+<!--                    map = new google.maps.Map(document.getElementById('map'), mapOptions);-->
+<!--                    startMarker = new google.maps.Marker({-->
+<!--                                                         map: map,-->
+<!--                                                         position: new google.maps.LatLng(path[0].lat, path[0].lng),-->
+<!--                                                         icon: startIcon-->
+<!--                                                         });-->
+<!--                                                         endMarker = new google.maps.Marker({-->
+<!--                                                                                            map: map,-->
+<!--                                                                                            position: new google.maps.LatLng(path[path.length - 1].lat, path[path.length - 1].lng),-->
+<!--                                                                                            icon: endIcon-->
+<!--                                                                                            })-->
+<!--                                                                                            infowindow = new google.maps.InfoWindow({content: ''});-->
+<!--                                                                                            extendedPath = getExtendedPath(path); //Let's extend the original path-->
+<!--                                                                                            runSnapToRoad(extendedPath);-->
+<!--                }-->
+<!--function getExtendedPath(path) {-->
+<!--    var extPath = path;-->
+<!--    var newPath = [];-->
+<!--    while (pointsTooFar(extPath)){  //We do it while all the distance between points are less then 250 meters-->
+<!--        newPath = [];-->
+<!--        for (var i = 0; i < extPath.length - 1; i++) {-->
+<!--            var pos1 = new google.maps.LatLng(extPath[i].lat, extPath[i].lng);-->
+<!--            var pos2 = new google.maps.LatLng(extPath[i + 1].lat, extPath[i + 1].lng);-->
+<!--            var dist = google.maps.geometry.spherical.computeDistanceBetween(pos1, pos2);-->
+<!--            newPath.push(extPath[i]);-->
+<!--            if (dist > 250) {  //If the distance between two points is greater than 250 metres we add an intermediate point-->
+<!--                var insPos = { "lat": (extPath[i].lat + extPath[i + 1].lat)/2, "lng": (extPath[i].lng + extPath[i + 1].lng)/2 };-->
+<!--                newPath.push(insPos);-->
+<!--            }-->
+<!--        }-->
+<!--        newPath.push(extPath[extPath.length-1]);-->
+<!--        extPath = newPath;-->
+<!--    }-->
+<!--    return extPath;-->
+<!--}-->
+<!---->
+<!--function pointsTooFar(pointPath){-->
+<!--    var tooFar = false;-->
+<!--    for (var i = 0; i < pointPath.length - 1; i++) {-->
+<!--        var pos1 = new google.maps.LatLng(pointPath[i].lat, pointPath[i].lng);-->
+<!--        var pos2 = new google.maps.LatLng(pointPath[i + 1].lat, pointPath[i + 1].lng);-->
+<!--        var dist = google.maps.geometry.spherical.computeDistanceBetween(pos1, pos2);-->
+<!--        if (dist > 250){-->
+<!--            tooFar = true;-->
+<!--            break;-->
+<!--        };-->
+<!--    };-->
+<!--    return tooFar;-->
+<!--}-->
+<!---->
+<!--// Snap a user-created polyline to roads and draw the snapped path-->
+<!--function runSnapToRoad(path) {-->
+<!--    var pathValues = [];-->
+<!--    for (var i = 0; i < path.length; i++) {-->
+<!--        pathValues.push((new google.maps.LatLng(path[i].lat, path[i].lng)).toUrlValue());-->
+<!--    }-->
+<!--    $.get('https://roads.googleapis.com/v1/snapToRoads', {-->
+<!--          interpolate: true,-->
+<!--          key: apiKey,-->
+<!--          path: pathValues.join('|')-->
+<!--          }, function(data) {-->
+<!--          processSnapToRoadResponse(data);-->
+<!--          drawSnappedPolyline();-->
+<!--          calcPathLength(snappedCoordinates);-->
+<!--          });-->
+<!--}-->
+<!---->
+<!--// Store snapped polyline returned by the snap-to-road service.-->
+<!--function processSnapToRoadResponse(data) {-->
+<!--    snappedCoordinates = [];-->
+<!--    for (var i = 0; i < data.snappedPoints.length; i++) {-->
+<!--        var latlng = new google.maps.LatLng(-->
+<!--                                            data.snappedPoints[i].location.latitude,-->
+<!--                                            data.snappedPoints[i].location.longitude);-->
+<!--                                            snappedCoordinates.push(latlng);-->
+<!--    }-->
+<!--}-->
+<!---->
+<!--// Draws the snapped polyline (after processing snap-to-road response).-->
+<!--function drawSnappedPolyline() {-->
+<!--    var snappedPolyline = new google.maps.Polyline({-->
+<!--                                                   path: snappedCoordinates,-->
+<!--                                                   strokeColor: '#00B3FD',-->
+<!--                                                   strokeOpacity: 0.6,-->
+<!--                                                   strokeWeight: 5-->
+<!--                                                   });-->
+<!--                                                   snappedPolyline.setMap(map);-->
+<!--}-->
+<!---->
+<!--function calcPathLength(cPath){-->
+<!--    var total = 0;-->
+<!--    for (var i = 0; i < cPath.length - 1; i++) {-->
+<!--        var pos1 = new google.maps.LatLng(cPath[i].lat(), cPath[i].lng());-->
+<!--        var pos2 = new google.maps.LatLng(cPath[i + 1].lat(), cPath[i + 1].lng());-->
+<!--        total += google.maps.geometry.spherical.computeDistanceBetween(pos1, pos2);-->
+<!--        console.log(google.maps.geometry.spherical.computeDistanceBetween(pos1, pos2).toFixed(0));-->
+<!--    };-->
+<!--    infowindow.setContent('<h4>Total length of the path: ' + (total / 1609.34).toFixed(1) + ' miles</h4>');-->
+<!--    infowindow.open(map, endMarker);-->
+<!--};-->
+<!--</script>-->
+
+<!-- <div id="map"></div>
+ -->
+
+
+<main class="mdl-layout__content" ng-controller="riderSummaryController">
+    <div class="demo-card-square mdl-card" style="width:90%; margin: 0 auto;">
+        <div class="mdl-card__title mdl-card--expand">
+        </div>
+        <div class="mdl-card__supporting-text">
+           <table class="">
+           	<th>Ride ID </th>
+           	<tr ng-repeat="ride.ridersummary">{{ridersummary[0].rideID}}</tr>
+           </table>
+    	</div>
+    </main>
+
+
+
+
+ridersummary
