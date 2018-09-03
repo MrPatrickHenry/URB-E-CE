@@ -28,20 +28,28 @@ class featureService extends Controller
     
 
 
-public function navigation(Request $request)
-{
-    $uid = $request->uid;  
+    public function navigation(Request $request)
+    {
+        $uid = $request->uid;  
+        $datetime = new DateTime();
 
-$userCreation = DB::table('users')->insert([
-        'email' => $email,
-        'created_at' => new DateTime();
-        'password' => Hash::make($password),  
-        'name' => $name
-          ]);
+        $UserFeatures = DB::table('users')->select('locale','ReleaseVersion')->where([
+            'id' => $uid
+        ])->get();
 
-    echo json_encode($userCreation,JSON_NUMERIC_CHECK); 
+$language = $UserFeatures[0]->locale;
+$release = $UserFeatures[0]->ReleaseVersion;
 
-}
+        $Features = DB::table('featureService')
+        ->select($language,'url','icon','FeaturedID')
+        ->where([
+            'Enabled' => 'True','release'=>$release
+        ])->orderBy('FeaturedID','asc' )
+        ->get();
+
+        echo json_encode($Features,JSON_NUMERIC_CHECK); 
+
+    }
 
 
 }
